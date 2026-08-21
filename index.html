@@ -1,495 +1,422 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Madake — Publicidad gráfica y digital que hace crecer tu marca</title>
-<meta name="description" content="Madake: publicidad gráfica y digital en San Juan. Impresos, piezas digitales, sitios web y mantenimiento de redes sociales.">
+<title>Madake · Publicidad Gráfica y Digital</title>
+<meta name="description" content="Madake — publicidad gráfica y digital que crece contigo. Flexible como el bambú, fuerte como tu marca.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grain"></div>
+<!--
+  NOTA TÉCNICA IMPORTANTE (carrito sin JavaScript):
+  Este sitio está construido 100% en HTML/CSS puro, sin JavaScript.
+  Los checkboxes de cada servicio permiten "marcar" visualmente lo que el
+  cliente quiere cotizar (cambia el estilo de la tarjeta a "agregado"),
+  pero como no hay JS no es posible sumar precios automáticamente ni
+  armar una lista dinámica del pedido. Por eso el botón final de WhatsApp
+  usa un enlace wa.me con un mensaje genérico predefinido: el cliente debe
+  escribir manualmente qué tarjetas marcó antes de enviarlo.
+  Reemplazar las rutas de imagen (img/madake-*.png y img/hoja-bambu.png)
+  por los archivos reales antes de publicar.
+-->
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="#inicio" class="brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 2 V38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M11 12 Q20 8 29 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M11 22 Q20 18 29 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M11 32 Q20 28 29 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-        </svg>
-      </span>
-      <span class="brand-name">Madake</span>
-    </a>
-    <nav class="main-nav" aria-label="Navegación principal">
-      <a href="#graficos">Gráfica</a>
-      <a href="#digitales">Digital</a>
-      <a href="#mantenimiento">Mantenimiento</a>
-      <a href="#contacto" class="nav-cta">Cotizar</a>
-    </nav>
-  </div>
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <a href="#inicio" class="navbar__brand">
+    <img src="img/madake-logotipo-b.png" alt="Madake" style="width: 120px; height: 60px abjet-fit: contain;"
+  </a>
+  <nav class="navbar__nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contactos">Contactos</a>
+  </nav>
 </header>
 
-<main id="inicio">
-
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-stalks" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="hero-inner reveal">
-      <p class="eyebrow">Publicidad gráfica &amp; digital · San Juan</p>
-      <div class="title-frame">
-        <h1 class="hero-title">Madake</h1>
-      </div>
-      <p class="hero-sub">Tu emprendimiento merece ser visto.</p>
-      <div class="hero-actions">
-        <a href="#graficos" class="btn btn-primary"><span>Ver servicios</span></a>
-        <a href="#contacto" class="btn btn-ghost"><span>Hablar por WhatsApp</span></a>
-      </div>
-    </div>
-    <div class="scroll-cue reveal" aria-hidden="true"><span></span></div>
-  </section>
-
-  <section class="intro">
-    <div class="intro-inner reveal">
-      <p>Tu marca tiene potencial. Ahora falta que el mundo lo vea. Descubre cómo podemos hacerlo realidad con lo material y digital.</p>
-    </div>
-  </section>
-
-  <!-- ===================== SERVICIOS GRÁFICOS ===================== -->
-  <section id="graficos" class="services-section">
-    <div class="section-head reveal">
-      <span class="section-tag">01 — Impreso</span>
-      <h2>Servicios Gráficos</h2>
-      <p>Papel, tinta y diseño incluido en cada precio.</p>
-    </div>
-
-    <div class="card-grid flip-grid">
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Folleto 1 cara</h3>
-            <p class="price">$15.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Folleto 1 cara</h4>
-            <p>Papel normal · 15×10 cm (1/4 A4)</p>
-            <p>100 unidades</p>
-            <p class="price-back">$15.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Folleto doble cara</h3>
-            <p class="price">$22.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Folleto doble cara</h4>
-            <p>Papel normal · 15×10 cm</p>
-            <p>100 unidades</p>
-            <p class="price-back">$22.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Tarjeta 1 cara</h3>
-            <p class="price">$19.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Tarjeta 1 cara</h4>
-            <p>Papel fotográfico · 5×10 cm</p>
-            <p>100 unidades</p>
-            <p class="price-back">$19.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Tarjeta doble cara</h3>
-            <p class="price">$27.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Tarjeta doble cara</h4>
-            <p>Papel fotográfico · 5×10 cm</p>
-            <p>100 unidades</p>
-            <p class="price-back">$27.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Talonario simple</h3>
-            <p class="price">$19.000</p>
-            <p class="mini">100 unidades · 1 cara</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Talonario simple</h4>
-            <p>Papel normal · 15×10 cm</p>
-            <p>100 unidades, 1 cara</p>
-            <p class="price-back">$19.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Talonario original + copia</h3>
-            <p class="price">$30.000</p>
-            <p class="mini">100 unidades · numerado</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Talonario original + copia</h4>
-            <p>Papel normal · 15×10 cm</p>
-            <p>100 unidades, numerado, doble impresión</p>
-            <p class="price-back">$30.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Imanes</h3>
-            <p class="price">$60.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Imanes</h4>
-            <p>Papel fotográfico imantado · 15×10 cm</p>
-            <p>100 unidades</p>
-            <p class="price-back">$60.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Banner con estructura</h3>
-            <p class="price price-variable">A cotizar</p>
-            <p class="mini">Lona full color</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Banner con estructura</h4>
-            <p>Lona full color · tamaño estándar</p>
-            <p>1 unidad — trabajo tercerizado</p>
-            <p class="price-back">Variable, se cotiza con la imprenta</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Stickers</h3>
-            <p class="price">$35.000</p>
-            <p class="mini">100 unidades</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Stickers</h4>
-            <p>Papel fotográfico adhesivo · 15×10 cm</p>
-            <p>100 unidades</p>
-            <p class="price-back">$35.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Cartelería A4</h3>
-            <p class="price">$20.000</p>
-            <p class="mini">100 unidades · 1 cara</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Cartelería A4</h4>
-            <p>Papel normal</p>
-            <p>100 unidades, 1 cara</p>
-            <p class="price-back">$20.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Cartelería A3</h3>
-            <p class="price">$40.000</p>
-            <p class="mini">100 unidades · 1 cara</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Cartelería A3</h4>
-            <p>Papel normal</p>
-            <p>100 unidades, 1 cara</p>
-            <p class="price-back">$40.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Impresión fotográfica A4</h3>
-            <p class="price">$2.500</p>
-            <p class="mini">1 unidad</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Impresión fotográfica A4</h4>
-            <p>Papel fotográfico</p>
-            <p>1 unidad</p>
-            <p class="price-back">$2.500</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Impresión fotográfica A3</h3>
-            <p class="price">$4.500</p>
-            <p class="mini">1 unidad</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Impresión fotográfica A3</h4>
-            <p>Papel fotográfico</p>
-            <p>1 unidad</p>
-            <p class="price-back">$4.500</p>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="note reveal">Todos los precios incluyen diseño gráfico. Si el cliente ya trae su propio diseño listo se hará un <strong>10% de descuento</strong> sobre estos valores (sólo impresión).</p>
-  </section>
-
-  <!-- ===================== SERVICIOS DIGITALES ===================== -->
-  <section id="digitales" class="services-section alt">
-    <div class="section-head reveal">
-      <span class="section-tag">02 — Digital</span>
-      <h2>Servicios Digitales</h2>
-      <p>Piezas y sitios pensados para moverse rápido en pantalla.</p>
-    </div>
-
-    <div class="card-grid flip-grid">
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Flyer digital individual</h3>
-            <p class="price">$13.000</p>
-            <p class="mini">1 pieza</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Flyer digital individual</h4>
-            <p>Diseño para redes / WhatsApp</p>
-            <p>1 pieza</p>
-            <p class="price-back">$13.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Video corto</h3>
-            <p class="price">$35.000</p>
-            <p class="mini">30 seg o más</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Video corto (30 seg o +)</h4>
-            <p>Grabado con cámara Canon + edición</p>
-            <p class="price-back">$35.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Kit Inicial</h3>
-            <p class="price">$100.000</p>
-            <p class="mini">Logo + carrusel + video</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Kit Inicial</h4>
-            <p>Logo + 1 carrusel (5 slides) + 1 video de 30 seg</p>
-            <p class="price-back">$100.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Creación de web — Básica</h3>
-            <p class="price">$200.000</p>
-            <p class="mini">Página única</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Creación de web — Básica</h4>
-            <p>Página única: info + contacto + WhatsApp</p>
-            <p class="price-back">$200.000</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-card flip-card reveal">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">
-            <span class="blob" aria-hidden="true"></span>
-            <h3>Creación de web — Completa</h3>
-            <p class="price">$350.000</p>
-            <p class="mini">Varias secciones</p>
-          </div>
-          <div class="flip-face flip-back">
-            <h4>Creación de web — Completa</h4>
-            <p>Varias secciones / páginas, catálogo básico</p>
-            <p class="price-back">$350.000</p>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===================== MANTENIMIENTO ===================== -->
-  <section id="mantenimiento" class="services-section">
-    <div class="section-head reveal">
-      <span class="section-tag">03 — Mensual</span>
-      <h2>Mantenimiento de Redes</h2>
-      <p>Kits mensuales con renovación automática cada mes.</p>
-    </div>
-
-    <div class="card-grid maint-grid">
-
-      <article class="maint-card reveal">
-        <div class="maint-border" aria-hidden="true"></div>
-        <h3>Kit Básico</h3>
-        <p class="price">$90.000<span>/mes</span></p>
-        <ul>
-          <li>8 publicaciones al mes (2 por semana)</li>
-          <li>Diseño sin sesión de fotos</li>
-        </ul>
-      </article>
-
-      <article class="maint-card featured reveal">
-        <div class="maint-border" aria-hidden="true"></div>
-        <span class="maint-flag">Más elegido</span>
-        <h3>Kit Estándar</h3>
-        <p class="price">$180.000<span>/mes</span></p>
-        <ul>
-          <li>12 publicaciones al mes</li>
-          <li>1 sesión de fotos profesional mensual (cámara Canon)</li>
-        </ul>
-      </article>
-
-      <article class="maint-card reveal">
-        <div class="maint-border" aria-hidden="true"></div>
-        <h3>Kit Premium</h3>
-        <p class="price">$230.000<span>/mes</span></p>
-        <ul>
-          <li>16 a 20 publicaciones al mes</li>
-          <li>Sesión de fotos profesional</li>
-          <li>1 video corto mensual</li>
-        </ul>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===================== CONTACTO ===================== -->
-  <section id="contacto" class="contact-section">
-    <div class="contact-inner reveal">
-      <h2>Hagamos crecer tu marca</h2>
-      <p>Contanos qué necesitás y te respondemos con una propuesta a medida.</p>
-      <a class="btn btn-primary btn-lg" href="https://wa.me/5492644393343" target="_blank" rel="noopener">
-        <span>Escribinos al +54 264 439-3343</span>
-      </a>
-
-      <details class="faq">
-        <summary>¿Cómo es el proceso de trabajo? <span class="chev" aria-hidden="true">▾</span></summary>
-        <p>Nos escribís por WhatsApp, definimos la pieza o el kit, coordinamos referencias o sesión de fotos si corresponde, y entregamos con hasta dos rondas de ajustes.</p>
-      </details>
-      <details class="faq">
-        <summary>¿El mantenimiento mensual se renueva solo? <span class="chev" aria-hidden="true">▾</span></summary>
-        <p>Sí, los kits de mantenimiento se renuevan automáticamente cada mes. Podés cambiar de kit o pausarlo avisando con anticipación.</p>
-      </details>
-      <details class="faq">
-        <summary>¿Puedo traer mi propio diseño para imprimir?</summary>
-        <p>Sí, si el arte ya está listo para imprenta aplicamos un 10% de descuento sobre el valor de la pieza, ya que no incluye diseño.</p>
-      </details>
-    </div>
-  </section>
-
-</main>
-
-<a class="whatsapp-float" href="https://wa.me/5492644393343" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
-  <span class="wa-ripple" aria-hidden="true"></span>
-  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M16 3C9 3 3.2 8.7 3.2 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2c1.9 1.1 4 1.6 6.1 1.6 7 0 12.8-5.7 12.8-12.6C28.8 8.7 23 3 16 3z" fill="#1f6d43"/>
-    <path d="M11.7 9.9c-.3-.7-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.8c.2.3 2.6 4.1 6.4 5.6 3.2 1.2 3.8 1 4.5.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.3-.2-1.5-.5-2.8-1.7-1-1-1.7-2.1-1.9-2.5-.2-.4 0-.6.2-.8.2-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2.1-.4 0-.6-.1-.2-.8-2-1.1-2.7z" fill="#fff"/>
-  </svg>
-</a>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="brand-mark small" aria-hidden="true">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 2 V38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M11 12 Q20 8 29 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M11 22 Q20 18 29 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M11 32 Q20 28 29 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-        </svg>
-      </span>
-      <span>Madake</span>
-    </div>
-    <p class="footer-quote">“Tu próxima campaña empieza aquí.
-Contáctanos y conoce todo lo que Madake puede hacer por ti.”</p>
-    <p class="footer-meta">Madake · Publicidad gráfica y digital · San Juan, Argentina</p>
+<!-- ================= INICIO ================= -->
+<section id="inicio" class="hero">
+  <div class="hero__logo-stage">
+    <img src="img/madake-logo-b.png" alt="Madake" class="hero__logo hero__logo--base">
+    <img src="img/madake-logo-n.png" alt="Madake" class="hero__logo hero__logo--active">
   </div>
+
+  <h1 class="hero__title">MADAKE</h1>
+  <p class="hero__tagline">Crece rápido. Doblate sin quebrarte. Publicidad que se planta y da resultados.</p>
+
+  <div class="bamboo-divider" aria-hidden="true"></div>
+
+  <div class="funnel">
+    <p class="funnel__question">¿Buscás publicidad gráfica o digital?</p>
+    <div class="funnel__cards">
+      <a href="#graficos" class="funnel__card funnel__card--graficos">
+        <span class="funnel__card-eyebrow">Impreso</span>
+        <span class="funnel__card-title">Publicidad Gráfica</span>
+        <span class="funnel__card-sub">Folletos, tarjetas, banners, stickers y más</span>
+      </a>
+      <a href="#digitales" class="funnel__card funnel__card--digitales">
+        <span class="funnel__card-eyebrow">Online</span>
+        <span class="funnel__card-title">Publicidad Digital</span>
+        <span class="funnel__card-sub">Redes sociales, video, web y branding</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="glow-field" aria-hidden="true">
+    <span class="glow-orb glow-orb--1"></span>
+    <span class="glow-orb glow-orb--2"></span>
+    <span class="glow-orb glow-orb--3"></span>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="servicios">
+
+  <!-- ---- GRÁFICOS ---- -->
+  <div id="graficos" class="bloque bloque--graficos">
+    <div class="bloque__header">
+      <span class="bloque__eyebrow">Nudo 01 · Impreso</span>
+      <h2 class="bloque__title">Publicidad Gráfica</h2>
+      <p class="bloque__nota">Todos los precios incluyen diseño gráfico. Si ya traés tu propio diseño listo, se aplica un <strong>10% de descuento</strong> sobre estos valores (solo impresión).</p>
+    </div>
+
+    <div class="grid-cards">
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Folleto 1 cara</h3>
+            <p class="card__price">$15.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 15×10cm (1/4 A4), 100 unidades, impresión a una cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Folleto doble cara</h3>
+            <p class="card__price">$22.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 15×10cm, 100 unidades, impresión a doble cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Tarjeta 1 cara</h3>
+            <p class="card__price">$19.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico, 5×10cm, 100 unidades, impresión a una cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Tarjeta doble cara</h3>
+            <p class="card__price">$27.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico, 5×10cm, 100 unidades, impresión a doble cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Talonario simple</h3>
+            <p class="card__price">$19.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 15×10cm, 100 unidades, 1 cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Talonario original + copia</h3>
+            <p class="card__price">$30.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 15×10cm, 100 unidades, numerado, doble impresión.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Imanes</h3>
+            <p class="card__price">$60.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico imantado, 15×10cm, 100 unidades.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Banner con estructura</h3>
+            <p class="card__price">Cotizar</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Lona full color, tamaño estándar, 1 unidad. Servicio tercerizado, precio variable según imprenta.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Stickers</h3>
+            <p class="card__price">$35.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico adhesivo, 15×10cm, 100 unidades.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Cartelería A4</h3>
+            <p class="card__price">$20.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 100 unidades, 1 cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Cartelería A3</h3>
+            <p class="card__price">$40.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel normal, 100 unidades, 1 cara.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Impresión fotográfica A4</h3>
+            <p class="card__price">$2.500</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico, 1 unidad.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--graf">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Impresión fotográfica A3</h3>
+            <p class="card__price">$4.500</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Papel fotográfico, 1 unidad.</p>
+          </div>
+        </div>
+      </label>
+
+    </div>
+  </div>
+
+  <div class="bamboo-divider" aria-hidden="true"></div>
+
+  <!-- ---- DIGITALES ---- -->
+  <div id="digitales" class="bloque bloque--digitales">
+    <div class="bloque__header">
+      <span class="bloque__eyebrow">Nudo 02 · Online</span>
+      <h2 class="bloque__title">Publicidad Digital</h2>
+      <p class="bloque__nota">Piezas, video y presencia web para que tu marca crezca donde te buscan.</p>
+    </div>
+
+    <div class="grid-cards">
+
+      <label class="card card--dig">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Flyer digital individual</h3>
+            <p class="card__price">$13.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Diseño para redes sociales o WhatsApp, 1 pieza.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--dig">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Video corto (30seg o +)</h3>
+            <p class="card__price">$35.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Grabado con cámara Canon y edición profesional.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--dig">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Kit Inicial</h3>
+            <p class="card__price">$100.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Logo + 1 carrusel (5 slides) + 1 video de 30 segundos.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--dig">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Creación de web básica</h3>
+            <p class="card__price">$250.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Página única: información, servicios y contactos.</p>
+          </div>
+        </div>
+      </label>
+
+      <label class="card card--dig">
+        <input type="checkbox" class="card__check">
+        <div class="card__inner">
+          <div class="card__front">
+            <h3>Creación de web completa</h3>
+            <p class="card__price">$400.000</p>
+            <span class="card__added">✓ Agregado</span>
+          </div>
+          <div class="card__back">
+            <p>Información, servicios, fotos, carrito de compras y contactos.</p>
+          </div>
+        </div>
+      </label>
+
+    </div>
+
+    <h3 class="submaint__title">Mantenimiento de redes sociales <span>(mensual, renovación automática)</span></h3>
+
+    <div class="grid-maint">
+      <div class="maint-card maint-card--basico">
+        <h4>Kit Básico</h4>
+        <p class="maint-card__price">$90.000<span>/mes</span></p>
+        <p class="maint-card__detail">8 publicaciones al mes (2 por semana), sin sesión de fotos.</p>
+      </div>
+      <div class="maint-card maint-card--estandar">
+        <h4>Kit Estándar</h4>
+        <p class="maint-card__price">$180.000<span>/mes</span></p>
+        <p class="maint-card__detail">12 publicaciones al mes + 1 sesión de fotos profesional mensual (cámara Canon).</p>
+      </div>
+      <div class="maint-card maint-card--premium">
+        <h4>Kit Premium</h4>
+        <p class="maint-card__price">$230.000<span>/mes</span></p>
+        <p class="maint-card__detail">16 a 20 publicaciones al mes + sesión de fotos + 1 video corto mensual.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= CIERRE MOTIVACIONAL ================= -->
+<section class="cierre">
+  <div class="cierre__inner">
+    <p class="cierre__eyebrow">Sobre el nombre</p>
+    <h2 class="cierre__frase">El madake es el bambú gigante japonés: crece más rápido que casi cualquier planta en la tierra, se dobla con el viento sin quebrarse y su raíz sostiene todo un bosque.</h2>
+    <p class="cierre__cta">Así queremos que crezca tu marca. Rápido. Flexible. Imposible de derribar.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACTOS ================= -->
+<section id="contactos" class="contacto">
+  <div class="contacto__inner">
+    <div class="contacto__texto">
+      <span class="bloque__eyebrow">Nudo 03 · Hablemos</span>
+      <h2 class="bloque__title">Contactos</h2>
+      <p>Contanos qué necesitás y armamos tu cotización. Marcá los servicios que te interesan en las tarjetas de arriba y contanos por WhatsApp cuáles elegiste.</p>
+      <ul class="contacto__lista">
+        <li><strong>WhatsApp:</strong> +54 264 439-3343</li>
+        <li><strong>Horario:</strong> Lunes a viernes, 9 a 18hs</li>
+        <li><strong>Zona:</strong> San Juan, Argentina</li>
+      </ul>
+      <a class="btn-ripple btn-border-anim contacto__whatsapp"
+         href="https://wa.me/5492644393343?text=Hola%2C%20quiero%20cotizar%20los%20siguientes%20servicios%20de%20Madake%3A%20%5Bdetallar%20aqu%C3%AD%5D"
+         target="_blank" rel="noopener">
+        Escribinos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 Madake · Publicidad Gráfica y Digital</p>
 </footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="whatsapp-float btn-border-anim"
+   href="https://wa.me/5492644393343?text=Hola%2C%20quiero%20cotizar%20los%20siguientes%20servicios%20de%20Madake%3A%20%5Bdetallar%20aqu%C3%AD%5D"
+   target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <span class="whatsapp-float__icon">✆</span>
+</a>
 
 </body>
 </html>
