@@ -1,549 +1,495 @@
-/* ============================================
-   MADAKE — Publicidad Gráfica y Digital
-   ============================================ */
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madake — Publicidad gráfica y digital que hace crecer tu marca</title>
+<meta name="description" content="Madake: publicidad gráfica y digital en San Juan. Impresos, piezas digitales, sitios web y mantenimiento de redes sociales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-:root{
-  --bg:            #0a120c;
-  --bg-soft:       #0e170f;
-  --surface:       #131e15;
-  --surface-glass: rgba(19, 30, 21, 0.55);
-  --border:        rgba(237, 237, 229, 0.09);
-  --border-strong: rgba(237, 237, 229, 0.16);
+<div class="grain"></div>
 
-  --green:       #2E8B57;
-  --green-light: #57b884;
-  --green-dim:   #1f5f3c;
-  --red:         #8B0000;
-  --red-light:   #c23a2e;
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#inicio" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2 V38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M11 12 Q20 8 29 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M11 22 Q20 18 29 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M11 32 Q20 28 29 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      <span class="brand-name">Madake</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#graficos">Gráfica</a>
+      <a href="#digitales">Digital</a>
+      <a href="#mantenimiento">Mantenimiento</a>
+      <a href="#contacto" class="nav-cta">Cotizar</a>
+    </nav>
+  </div>
+</header>
 
-  --text:       #ECEDE7;
-  --text-muted: #9caa9f;
-  --text-faint: #6c7a70;
+<main id="inicio">
 
-  --font-display: "Fraunces", serif;
-  --font-body:    "Space Grotesk", sans-serif;
-  --font-mono:    "JetBrains Mono", monospace;
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-stalks" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-inner reveal">
+      <p class="eyebrow">Publicidad gráfica &amp; digital · San Juan</p>
+      <div class="title-frame">
+        <h1 class="hero-title">Madake</h1>
+      </div>
+      <p class="hero-sub">Tu emprendimiento merece ser visto.</p>
+      <div class="hero-actions">
+        <a href="#graficos" class="btn btn-primary"><span>Ver servicios</span></a>
+        <a href="#contacto" class="btn btn-ghost"><span>Hablar por WhatsApp</span></a>
+      </div>
+    </div>
+    <div class="scroll-cue reveal" aria-hidden="true"><span></span></div>
+  </section>
 
-  --ease: cubic-bezier(.22,1,.36,1);
-}
+  <section class="intro">
+    <div class="intro-inner reveal">
+      <p>Tu marca tiene potencial. Ahora falta que el mundo lo vea. Descubre cómo podemos hacerlo realidad en lo material y digital.</p>
+    </div>
+  </section>
 
-*, *::before, *::after{ box-sizing: border-box; }
+  <!-- ===================== SERVICIOS GRÁFICOS ===================== -->
+  <section id="graficos" class="services-section">
+    <div class="section-head reveal">
+      <span class="section-tag">01 — Impreso</span>
+      <h2>Servicios Gráficos</h2>
+      <p>Papel, tinta y diseño incluido en cada precio.</p>
+    </div>
 
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+    <div class="card-grid flip-grid">
 
-html{ scroll-behavior: smooth; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Folleto 1 cara</h3>
+            <p class="price">$15.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Folleto 1 cara</h4>
+            <p>Papel normal · 15×10 cm (1/4 A4)</p>
+            <p>100 unidades</p>
+            <p class="price-back">$15.000</p>
+          </div>
+        </div>
+      </article>
 
-body{
-  margin: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 15% -10%, rgba(46,139,87,.20), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 100% 10%, rgba(139,0,0,.16), transparent 55%),
-    var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  line-height: 1.5;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Folleto doble cara</h3>
+            <p class="price">$22.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Folleto doble cara</h4>
+            <p>Papel normal · 15×10 cm</p>
+            <p>100 unidades</p>
+            <p class="price-back">$22.000</p>
+          </div>
+        </div>
+      </article>
 
-a{ color: inherit; text-decoration: none; }
-ul{ margin: 0; padding: 0; list-style: none; }
-h1,h2,h3{ font-family: var(--font-display); margin: 0; font-weight: 600; }
-p{ margin: 0; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Tarjeta 1 cara</h3>
+            <p class="price">$19.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Tarjeta 1 cara</h4>
+            <p>Papel fotográfico · 5×10 cm</p>
+            <p>100 unidades</p>
+            <p class="price-back">$19.000</p>
+          </div>
+        </div>
+      </article>
 
-::selection{ background: var(--green); color: #06110a; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Tarjeta doble cara</h3>
+            <p class="price">$27.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Tarjeta doble cara</h4>
+            <p>Papel fotográfico · 5×10 cm</p>
+            <p>100 unidades</p>
+            <p class="price-back">$27.000</p>
+          </div>
+        </div>
+      </article>
 
-:focus-visible{
-  outline: 2px solid var(--green-light);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Talonario simple</h3>
+            <p class="price">$19.000</p>
+            <p class="mini">100 unidades · 1 cara</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Talonario simple</h4>
+            <p>Papel normal · 15×10 cm</p>
+            <p>100 unidades, 1 cara</p>
+            <p class="price-back">$19.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ---------- reveal-on-load ---------- */
-@keyframes rise{
-  from{ opacity: 0; transform: translateY(22px); }
-  to{ opacity: 1; transform: translateY(0); }
-}
-.reveal{
-  opacity: 0;
-  animation: rise .9s var(--ease) forwards;
-  animation-delay: var(--d, 0s);
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Talonario original + copia</h3>
+            <p class="price">$30.000</p>
+            <p class="mini">100 unidades · numerado</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Talonario original + copia</h4>
+            <p>Papel normal · 15×10 cm</p>
+            <p>100 unidades, numerado, doble impresión</p>
+            <p class="price-back">$30.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ---------- decorative stalk field (fixed backdrop) ---------- */
-.stalk-field{
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.stalk{
-  position: absolute;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(87,184,132,.18), transparent);
-}
-.s1{ left: 6%;  top: 0; height: 60%; animation: sway 9s ease-in-out infinite; }
-.s2{ left: 22%; top: 20%; height: 40%; animation: sway 11s ease-in-out infinite 1s; }
-.s3{ right: 12%; top: 5%; height: 55%; animation: sway 8s ease-in-out infinite .5s; }
-.s4{ right: 28%; top: 40%; height: 35%; animation: sway 10s ease-in-out infinite 2s; }
-@keyframes sway{
-  0%,100%{ transform: rotate(-.6deg); }
-  50%{ transform: rotate(.6deg); }
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Imanes</h3>
+            <p class="price">$60.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Imanes</h4>
+            <p>Papel fotográfico imantado · 15×10 cm</p>
+            <p>100 unidades</p>
+            <p class="price-back">$60.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ HEADER ============ */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  background: rgba(10, 18, 12, .55);
-  border-bottom: 1px solid var(--border);
-}
-.header-inner{
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 1.1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo{
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-}
-.logo-mark{ display: inline-flex; gap: 3px; align-items: center; }
-.logo-mark .node{
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green-light);
-  box-shadow: 0 0 8px rgba(87,184,132,.7);
-}
-.logo-mark .node:nth-child(2){ background: var(--red-light); box-shadow: 0 0 8px rgba(194,58,46,.7); }
-.logo-mark.small .node{ width: 4px; height: 4px; }
-.logo-text{
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: .12em;
-}
-.main-nav{ display: flex; gap: 2rem; font-size: .92rem; color: var(--text-muted); }
-.main-nav a{
-  position: relative;
-  transition: color .3s var(--ease);
-}
-.main-nav a::after{
-  content:"";
-  position: absolute;
-  left: 0; right: 0; bottom: -5px;
-  height: 1px;
-  background: var(--green-light);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform .35s var(--ease);
-}
-.main-nav a:hover{ color: var(--text); }
-.main-nav a:hover::after{ transform: scaleX(1); transform-origin: left; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Banner con estructura</h3>
+            <p class="price price-variable">A cotizar</p>
+            <p class="mini">Lona full color</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Banner con estructura</h4>
+            <p>Lona full color · tamaño estándar</p>
+            <p>1 unidad — trabajo tercerizado</p>
+            <p class="price-back">Variable, se cotiza con la imprenta</p>
+          </div>
+        </div>
+      </article>
 
-@media (max-width: 700px){
-  .main-nav{ display: none; }
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Stickers</h3>
+            <p class="price">$35.000</p>
+            <p class="mini">100 unidades</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Stickers</h4>
+            <p>Papel fotográfico adhesivo · 15×10 cm</p>
+            <p>100 unidades</p>
+            <p class="price-back">$35.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ HERO ============ */
-.hero{
-  position: relative;
-  min-height: 92vh;
-  display: flex;
-  align-items: center;
-  padding: 6rem 1.5rem 4rem;
-  overflow: hidden;
-  background: linear-gradient(120deg, #0a120c, #123321, #0a120c, #2a0d0b, #0a120c);
-  background-size: 340% 340%;
-  animation: driftGradient 22s ease infinite;
-}
-@keyframes driftGradient{
-  0%{ background-position: 0% 30%; }
-  50%{ background-position: 100% 70%; }
-  100%{ background-position: 0% 30%; }
-}
-.hero-inner{
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-.eyebrow{
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--green-light);
-  margin-bottom: 1.1rem;
-}
-.hero-title{
-  font-size: clamp(2.6rem, 6vw, 4.6rem);
-  line-height: 1.05;
-  letter-spacing: -.01em;
-}
-.hero-title span{ display: block; }
-.accent-italic{
-  font-style: italic;
-  font-weight: 500;
-  background: linear-gradient(100deg, var(--green-light), #d7c88a 55%, var(--red-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-sub{
-  margin: 1.6rem auto 0;
-  max-width: 52ch;
-  color: var(--text-muted);
-  font-size: 1.05rem;
-}
-.hero-actions{
-  margin-top: 2.3rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Cartelería A4</h3>
+            <p class="price">$20.000</p>
+            <p class="mini">100 unidades · 1 cara</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Cartelería A4</h4>
+            <p>Papel normal</p>
+            <p>100 unidades, 1 cara</p>
+            <p class="price-back">$20.000</p>
+          </div>
+        </div>
+      </article>
 
-.btn{
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .85rem 1.7rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: .95rem;
-  transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
-  border: 1px solid transparent;
-}
-.btn-primary{
-  background: linear-gradient(120deg, var(--green), var(--green-dim));
-  color: #eafff2;
-  box-shadow: 0 8px 24px -8px rgba(46,139,87,.55);
-}
-.btn-primary:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px -8px rgba(46,139,87,.7);
-}
-.btn-ghost{
-  border-color: var(--border-strong);
-  color: var(--text);
-  background: rgba(255,255,255,.02);
-}
-.btn-ghost:hover{
-  transform: translateY(-3px);
-  border-color: var(--green-light);
-  background: rgba(87,184,132,.08);
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Cartelería A3</h3>
+            <p class="price">$40.000</p>
+            <p class="mini">100 unidades · 1 cara</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Cartelería A3</h4>
+            <p>Papel normal</p>
+            <p>100 unidades, 1 cara</p>
+            <p class="price-back">$40.000</p>
+          </div>
+        </div>
+      </article>
 
-/* growing bamboo stalks in hero */
-.hero-stalks{
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-.grow-stalk{
-  position: absolute;
-  bottom: -4%;
-  width: 3px;
-  display: flex;
-  flex-direction: column-reverse;
-  transform-origin: bottom center;
-  animation: growUp 1.6s var(--ease) forwards;
-}
-.grow-stalk i{
-  display: block;
-  width: 100%;
-  height: 44px;
-  background: linear-gradient(to top, var(--green-dim), var(--green-light));
-  border-bottom: 2px solid rgba(10,18,12,.7);
-  opacity: .35;
-}
-.gs1{ left: 8%;  height: 0; animation-delay: .3s; }
-.gs2{ left: 88%; height: 0; animation-delay: .6s; }
-.gs3{ left: 15%; height: 0; animation-delay: .9s; opacity: .6; }
-@keyframes growUp{
-  from{ height: 0; }
-  to{ height: 220px; }
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Impresión fotográfica A4</h3>
+            <p class="price">$2.500</p>
+            <p class="mini">1 unidad</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Impresión fotográfica A4</h4>
+            <p>Papel fotográfico</p>
+            <p>1 unidad</p>
+            <p class="price-back">$2.500</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ SECTION DIVIDER ============ */
-.divider{
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  padding: 2.5rem 0;
-}
-.divider span{
-  width: min(240px, 60%);
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--green-light), var(--red-light), transparent);
-  background-size: 220% 100%;
-  animation: shimmerLine 5s linear infinite;
-}
-@keyframes shimmerLine{
-  0%{ background-position: 220% 0; }
-  100%{ background-position: -220% 0; }
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Impresión fotográfica A3</h3>
+            <p class="price">$4.500</p>
+            <p class="mini">1 unidad</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Impresión fotográfica A3</h4>
+            <p>Papel fotográfico</p>
+            <p>1 unidad</p>
+            <p class="price-back">$4.500</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ SECTIONS ============ */
-.section{
-  position: relative;
-  z-index: 1;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 5rem;
-}
-.section-head{
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 3rem;
-}
-.section-head h2{
-  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-  margin-top: .5rem;
-}
-.section-sub{
-  margin-top: .9rem;
-  color: var(--text-muted);
-}
+    </div>
 
-/* ============ CARD GRID ============ */
-.card-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.25rem;
-  perspective: 1200px;
-}
+    <p class="note reveal">Todos los precios incluyen diseño gráfico. Si el cliente ya trae su propio diseño listo se hará un <strong>10% de descuento</strong> sobre estos valores (sólo impresión).</p>
+  </section>
 
-@keyframes cardIn{
-  from{ opacity: 0; transform: translateY(28px); }
-  to{ opacity: 1; transform: translateY(0); }
-}
+  <!-- ===================== SERVICIOS DIGITALES ===================== -->
+  <section id="digitales" class="services-section alt">
+    <div class="section-head reveal">
+      <span class="section-tag">02 — Digital</span>
+      <h2>Servicios Digitales</h2>
+      <p>Piezas y sitios pensados para moverse rápido en pantalla.</p>
+    </div>
 
-.card{
-  position: relative;
-  padding: 1.6rem 1.5rem 1.8rem;
-  border-radius: 14px;
-  background: var(--surface-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  opacity: 0;
-  animation: cardIn .7s var(--ease) forwards;
-  animation-delay: calc(var(--i, 0) * .08s + .1s);
-  transform-style: preserve-3d;
-  transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
-}
-.card::before{
-  content:"";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(87,184,132,.5), transparent 40%, rgba(194,58,46,.4));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity .45s var(--ease);
-  pointer-events: none;
-}
-.card-shine{
-  position: absolute;
-  top: 0; left: -60%;
-  width: 40%; height: 100%;
-  background: linear-gradient(75deg, transparent, rgba(255,255,255,.08), transparent);
-  transform: skewX(-18deg);
-  transition: left .7s ease;
-  pointer-events: none;
-}
-.card:hover{
-  transform: rotateX(4deg) rotateY(-4deg) translateY(-6px) scale(1.015);
-  box-shadow: 0 22px 40px -18px rgba(0,0,0,.6), 0 0 0 1px rgba(87,184,132,.12), 0 0 28px -6px rgba(46,139,87,.35);
-  border-color: var(--border-strong);
-}
-.card:hover::before{ opacity: 1; }
-.card:hover .card-shine{ left: 120%; }
+    <div class="card-grid flip-grid">
 
-.card h3{
-  font-size: 1.08rem;
-  font-weight: 600;
-  margin-bottom: .5rem;
-}
-.card .spec{
-  font-size: .86rem;
-  color: var(--text-muted);
-  min-height: 2.6em;
-}
-.card .price{
-  margin-top: 1.1rem;
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--green-light);
-  letter-spacing: .01em;
-}
-.card-quote .price-quote{
-  color: var(--red-light);
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Flyer digital individual</h3>
+            <p class="price">$13.000</p>
+            <p class="mini">1 pieza</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Flyer digital individual</h4>
+            <p>Diseño para redes / WhatsApp</p>
+            <p>1 pieza</p>
+            <p class="price-back">$13.000</p>
+          </div>
+        </div>
+      </article>
 
-.note{
-  margin-top: 2.5rem;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: .92rem;
-  max-width: 60ch;
-  margin-inline: auto;
-}
-.note strong{ color: var(--green-light); }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Video corto</h3>
+            <p class="price">$35.000</p>
+            <p class="mini">30 seg o más</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Video corto (30 seg o +)</h4>
+            <p>Grabado con cámara Canon + edición</p>
+            <p class="price-back">$35.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ TIER CARDS (redes) ============ */
-.tier-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  align-items: stretch;
-}
-.tier{
-  position: relative;
-  padding: 2rem 1.75rem;
-  border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  opacity: 0;
-  animation: cardIn .7s var(--ease) forwards;
-  animation-delay: calc(var(--i, 0) * .12s + .1s);
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
-}
-.tier:hover{
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 24px 44px -20px rgba(0,0,0,.65);
-  border-color: var(--border-strong);
-}
-.tier-highlight{
-  background: linear-gradient(165deg, rgba(46,139,87,.14), var(--surface) 55%);
-  border-color: rgba(87,184,132,.35);
-}
-.tier-flag{
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--green-light);
-  margin-bottom: .6rem;
-}
-.tier h3{ font-size: 1.3rem; }
-.tier-price{
-  font-family: var(--font-mono);
-  font-size: 2rem;
-  font-weight: 600;
-  margin: .8rem 0 1.3rem;
-  color: var(--text);
-}
-.tier-price span{
-  font-size: .85rem;
-  color: var(--text-faint);
-  font-weight: 400;
-}
-.tier-list li{
-  padding: .5rem 0;
-  border-top: 1px dashed var(--border);
-  color: var(--text-muted);
-  font-size: .93rem;
-}
-.tier-list li:first-child{ border-top: none; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Kit Inicial</h3>
+            <p class="price">$100.000</p>
+            <p class="mini">Logo + carrusel + video</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Kit Inicial</h4>
+            <p>Logo + 1 carrusel (5 slides) + 1 video de 30 seg</p>
+            <p class="price-back">$100.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ CTA FINAL ============ */
-.cta-final{
-  text-align: center;
-  padding-top: 1rem;
-}
-.cta-final h2{ font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
-.cta-final .section-sub{ margin-bottom: 2.2rem; }
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Creación de web — Básica</h3>
+            <p class="price">$200.000</p>
+            <p class="mini">Página única</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Creación de web — Básica</h4>
+            <p>Página única: info + contacto + WhatsApp</p>
+            <p class="price-back">$200.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ FOOTER ============ */
-.site-footer{
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--border);
-  padding: 3rem 1.5rem 2.2rem;
-  text-align: center;
-}
-.footer-quote{
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
-  max-width: 46ch;
-  margin: 0 auto 1.6rem;
-  color: var(--text);
-}
-.footer-bottom{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .6rem;
-  color: var(--text-faint);
-  font-size: .82rem;
-}
+      <article class="service-card flip-card reveal">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="blob" aria-hidden="true"></span>
+            <h3>Creación de web — Completa</h3>
+            <p class="price">$350.000</p>
+            <p class="mini">Varias secciones</p>
+          </div>
+          <div class="flip-face flip-back">
+            <h4>Creación de web — Completa</h4>
+            <p>Varias secciones / páginas, catálogo básico</p>
+            <p class="price-back">$350.000</p>
+          </div>
+        </div>
+      </article>
 
-/* ============ WHATSAPP FLOAT ============ */
-.whatsapp-float{
-  position: fixed;
-  right: 1.4rem;
-  bottom: 1.4rem;
-  z-index: 60;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(145deg, var(--green-light), var(--green-dim));
-  color: #06150c;
-  box-shadow: 0 10px 26px -8px rgba(46,139,87,.65);
-  animation: floatBtn 3.4s ease-in-out infinite, pulseBtn 2.6s ease-in-out infinite;
-  transition: transform .3s var(--ease);
-}
-.whatsapp-float:hover{
-  transform: scale(1.1);
-}
-@keyframes floatBtn{
-  0%,100%{ transform: translateY(0); }
-  50%{ transform: translateY(-8px); }
-}
-@keyframes pulseBtn{
-  0%,100%{ box-shadow: 0 10px 26px -8px rgba(46,139,87,.65), 0 0 0 0 rgba(87,184,132,.5); }
-  50%{ box-shadow: 0 10px 26px -8px rgba(46,139,87,.65), 0 0 0 12px rgba(87,184,132,0); }
-}
+    </div>
+  </section>
 
-/* ============ RESPONSIVE ============ */
-@media (max-width: 560px){
-  .hero{ min-height: 82vh; padding-top: 5rem; }
-  .header-inner{ padding: .9rem 1.2rem; }
-  .card-grid{ grid-template-columns: 1fr 1fr; }
-  .whatsapp-float{ width: 52px; height: 52px; right: 1rem; bottom: 1rem; }
-}
-@media (max-width: 400px){
-  .card-grid{ grid-template-columns: 1fr; }
-}
+  <!-- ===================== MANTENIMIENTO ===================== -->
+  <section id="mantenimiento" class="services-section">
+    <div class="section-head reveal">
+      <span class="section-tag">03 — Mensual</span>
+      <h2>Mantenimiento de Redes</h2>
+      <p>Kits mensuales con renovación automática cada mes.</p>
+    </div>
+
+    <div class="card-grid maint-grid">
+
+      <article class="maint-card reveal">
+        <div class="maint-border" aria-hidden="true"></div>
+        <h3>Kit Básico</h3>
+        <p class="price">$90.000<span>/mes</span></p>
+        <ul>
+          <li>8 publicaciones al mes (2 por semana)</li>
+          <li>Diseño sin sesión de fotos</li>
+        </ul>
+      </article>
+
+      <article class="maint-card featured reveal">
+        <div class="maint-border" aria-hidden="true"></div>
+        <span class="maint-flag">Más elegido</span>
+        <h3>Kit Estándar</h3>
+        <p class="price">$180.000<span>/mes</span></p>
+        <ul>
+          <li>12 publicaciones al mes</li>
+          <li>1 sesión de fotos profesional mensual (cámara Canon)</li>
+        </ul>
+      </article>
+
+      <article class="maint-card reveal">
+        <div class="maint-border" aria-hidden="true"></div>
+        <h3>Kit Premium</h3>
+        <p class="price">$230.000<span>/mes</span></p>
+        <ul>
+          <li>16 a 20 publicaciones al mes</li>
+          <li>Sesión de fotos profesional</li>
+          <li>1 video corto mensual</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-inner reveal">
+      <h2>Hagamos crecer tu marca</h2>
+      <p>Contanos qué necesitás y te respondemos con una propuesta a medida.</p>
+      <a class="btn btn-primary btn-lg" href="https://wa.me/5492644393343" target="_blank" rel="noopener">
+        <span>Escribinos al +54 264 439-3343</span>
+      </a>
+
+      <details class="faq">
+        <summary>¿Cómo es el proceso de trabajo? <span class="chev" aria-hidden="true">▾</span></summary>
+        <p>Nos escribís por WhatsApp, definimos la pieza o el kit, coordinamos referencias o sesión de fotos si corresponde, y entregamos con hasta dos rondas de ajustes.</p>
+      </details>
+      <details class="faq">
+        <summary>¿El mantenimiento mensual se renueva solo? <span class="chev" aria-hidden="true">▾</span></summary>
+        <p>Sí, los kits de mantenimiento se renuevan automáticamente cada mes. Podés cambiar de kit o pausarlo avisando con anticipación.</p>
+      </details>
+      <details class="faq">
+        <summary>¿Puedo traer mi propio diseño para imprimir?</summary>
+        <p>Sí, si el arte ya está listo para imprenta aplicamos un 10% de descuento sobre el valor de la pieza, ya que no incluye diseño.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<a class="whatsapp-float" href="https://wa.me/5492644393343" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <span class="wa-ripple" aria-hidden="true"></span>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M16 3C9 3 3.2 8.7 3.2 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2c1.9 1.1 4 1.6 6.1 1.6 7 0 12.8-5.7 12.8-12.6C28.8 8.7 23 3 16 3z" fill="#1f6d43"/>
+    <path d="M11.7 9.9c-.3-.7-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.2-1.3 3s1.3 3.5 1.5 3.8c.2.3 2.6 4.1 6.4 5.6 3.2 1.2 3.8 1 4.5.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.3-.2-1.5-.5-2.8-1.7-1-1-1.7-2.1-1.9-2.5-.2-.4 0-.6.2-.8.2-.2.3-.4.5-.6.2-.2.2-.4.3-.6.1-.2.1-.4 0-.6-.1-.2-.8-2-1.1-2.7z" fill="#fff"/>
+  </svg>
+</a>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark small" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2 V38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M11 12 Q20 8 29 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M11 22 Q20 18 29 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M11 32 Q20 28 29 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      <span>Madake</span>
+    </div>
+    <p class="footer-quote">“Tu próxima campaña empieza aquí.
+Contáctanos y conoce todo lo que Madake puede hacer por ti.”</p>
+    <p class="footer-meta">Madake · Publicidad gráfica y digital · San Juan, Argentina</p>
+  </div>
+</footer>
+
+</body>
+</html>
