@@ -147,7 +147,7 @@ img{ max-width:100%; display:block; }
   .hero__logo--active{
     animation: logo-crossfade linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 100%;
+    animation-range: exit 0% exit 100%;
   }
   @keyframes logo-crossfade{
     from{ opacity:0; }
