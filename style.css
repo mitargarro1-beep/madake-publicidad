@@ -118,11 +118,11 @@ img{ max-width:100%; display:block; }
 
 .hero__logo-stage{
   position:relative;
-  width: min(320px, 60vw);
+  width: min(460px, 78vw);
   aspect-ratio: 1;
-  margin-bottom: 5rem; /* espacio para que la luz de la plataforma no tape el título */
-  --rabbit-scale: 1.6; /* tamaño de la plataforma respecto al original (200px) */
-  --rabbit-top: 70%;   /* altura del centro de la plataforma dentro del escenario */
+  margin-bottom: 6rem; /* espacio para que la luz no tape el título */
+  --rabbit-scale: 2.3; /* tamaño de la luz respecto al original (200px) */
+  --rabbit-top: 70%;   /* altura del centro de la luz dentro del escenario */
 }
 
 /* Logo: gira sobre su eje vertical como el objeto original (10s, lineal, infinito).
@@ -207,24 +207,12 @@ img{ max-width:100%; display:block; }
 
   filter: blur(20px);
   box-shadow: 0 0 200px 15px white;
+  background: rgba(255, 255, 255, 0.3); /* rellena el centro de la luz (antes lo tapaba la plataforma) */
   transform: rotateX(90deg) scale(1.1) translateZ(-120px);
-}
-.uv-rabbit__plate{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgb(21, 21, 21);
-  transform: rotateX(90deg) translateZ(100px);
-  animation: uv-rabbit-updown 4s infinite ease-in-out;
 }
 @keyframes uv-rabbit-rotate{
   0%{ transform: rotate3d(0,1,0,0deg); }
   100%{ transform: rotate3d(0,1,0,360deg); }
-}
-@keyframes uv-rabbit-updown{
-  0%{ transform: translateY(100px) rotateX(90deg) translateZ(100px); }
-  50%{ transform: translateY(200px) rotateX(90deg) translateZ(100px); }
-  100%{ transform: translateY(100px) rotateX(90deg) translateZ(100px); }
 }
 
 /* ---------- 8. BAMBOO DIVIDER (elemento firma) ---------- */
@@ -1141,7 +1129,7 @@ var(--morado), var(--verde-bambu-claro));
   .navbar__nav a{ font-size:.72rem; }
 
   .hero{ padding: 4.5rem 6vw 3rem; }
-  .hero__logo-stage{ --rabbit-scale: 1.1; margin-bottom: 4rem; }
+  .hero__logo-stage{ --rabbit-scale: 1.5; margin-bottom: 4.5rem; }
   .funnel__cards{ flex-direction:column; align-items:center; }
 
   .grid-cards{ grid-template-columns: 1fr; }
