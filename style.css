@@ -540,7 +540,7 @@ var(--morado), var(--verde-bambu-claro));
   font-weight: 800;
   line-height: 1.05;
   margin: 0;
-  text-shadow: 0 2px 12px rgba(30, 10, 70, .45);
+  text-shadow: 0 2px 12px rgba(83, 17, 216, 0.45);
 }
 .uv-frog__price{
   font-family: var(--fuente-display);
@@ -555,7 +555,7 @@ var(--morado), var(--verde-bambu-claro));
   line-height: 1.45;
   font-weight: 600;
   margin: 0;
-  text-shadow: 0 2px 12px rgba(30, 10, 70, .45);
+  text-shadow: 0 2px 12px rgba(48, 7, 129, 0.45);
 }
 
 /* ---------- 10. MANTENIMIENTO — "cowardly-eagle" (frente: título + precio / dorso: detalles) ----------
@@ -645,7 +645,7 @@ var(--morado), var(--verde-bambu-claro));
   text-align: center;
   width: 100%;
   margin: 0 0 1.1rem;
-  background: linear-gradient(45deg, #8FBF7F, #B794F6);
+  background: linear-gradient(45deg, #38c509, #773ee2);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -662,7 +662,7 @@ var(--morado), var(--verde-bambu-claro));
   font-size: 2.6rem;
   font-weight: 800;
   line-height: 1;
-  background: linear-gradient(90deg, #8FBF7F, #A855F7);
+  background: linear-gradient(90deg, #8FBF7F, #8c24ee);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
