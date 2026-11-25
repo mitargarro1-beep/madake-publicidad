@@ -5,7 +5,7 @@
    2. Reset y base
    3. Cursor personalizado
    4. Navbar
-   5. Hero (Inicio) + logo giratorio sobre plataforma luminosa
+   5. Hero (Inicio) + logo giratorio
    6. Embudo de ventas (funnel) — tarjetas "moody-owl"
    7. Glow orbs (scroll reveal)
    8. Bamboo divider (elemento firma)
@@ -104,14 +104,13 @@ img{ max-width:100%; display:block; }
 }
 .navbar__nav a:hover::after{ width:100%; }
 
-/* ---------- 5. HERO + LOGO GIRATORIO SOBRE PLATAFORMA LUMINOSA ---------- */
+/* ---------- 5. HERO + LOGO GIRATORIO ---------- */
 .hero{
   min-height: 100svh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   text-align:center;
   padding: 6rem 5vw 4rem;
   position: relative;
-  overflow-x: clip; /* la luz de la plataforma es más ancha que la pantalla en móvil */
 }
 /* El texto del hero queda por encima de la luz */
 .hero__title, .hero__tagline, .funnel, .hero > .bamboo-divider{ position: relative; z-index: 1; }
@@ -120,9 +119,7 @@ img{ max-width:100%; display:block; }
   position:relative;
   width: min(460px, 78vw);
   aspect-ratio: 1;
-  margin-bottom: 6rem; /* espacio para que la luz no tape el título */
-  --rabbit-scale: 2.3; /* tamaño de la luz respecto al original (200px) */
-  --rabbit-top: 70%;   /* altura del centro de la luz dentro del escenario */
+  margin-bottom: 2rem;
 }
 
 /* Logo: gira sobre su eje vertical como el objeto original (10s, lineal, infinito).
@@ -135,7 +132,6 @@ img{ max-width:100%; display:block; }
 .hero__logo-face{
   position:absolute; inset:0;
   backface-visibility: hidden;
-  filter: drop-shadow(0 8px 22px rgba(0,0,0,.45));
 }
 .hero__logo-face--back{ transform: rotateY(180deg); }
 
@@ -149,9 +145,9 @@ img{ max-width:100%; display:block; }
 /* Al llegar al final del rango de scroll, se revela la versión "N" del logo */
 @supports (animation-timeline: view()){
   .hero__logo--active{
-    animation: logo-crossfade linear;
+    animation: logo-crossfade linear both;
     animation-timeline: view();
-    animation-range: entry 20% cover 60%;
+    animation-range: entry 0% cover 100%;
   }
   @keyframes logo-crossfade{
     from{ opacity:0; }
@@ -172,44 +168,10 @@ img{ max-width:100%; display:block; }
   margin-bottom: 2.5rem;
 }
 
-/* From Uiverse.io by Saad3092003 - https://uiverse.io/Saad3092003/chatty-rabbit-71
+/* Giro del logo: animación "rotate" de Uiverse.io
+   From Uiverse.io by Saad3092003 - https://uiverse.io/Saad3092003/chatty-rabbit-71
    MIT License, Copyright (c) Saad3092003 (Saad Shaikh)
-   (clases renombradas con el prefijo .uv-rabbit para no chocar con otras) */
-.uv-rabbit{
-  position:absolute;
-  left:50%; top: var(--rabbit-top);
-  width:200px; height:200px;
-  margin: -100px 0 0 -100px;
-  transform: scale(var(--rabbit-scale));
-  pointer-events:none;
-}
-.uv-rabbit__obj{
-  position: relative;
-  width: 200px;
-  height: 200px;
-
-  transform-style: preserve-3d;
-  transition: 0.5s all;
-  transform: rotateX(-25deg) rotateY(20deg);
-}
-.uv-rabbit__child{
-  animation: uv-rabbit-rotate 10s infinite linear;
-  transform-style: preserve-3d;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.uv-rabbit__child::after{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  filter: blur(20px);
-  box-shadow: 0 0 200px 15px white;
-  background: rgba(255, 255, 255, 0.3); /* rellena el centro de la luz (antes lo tapaba la plataforma) */
-  transform: rotateX(90deg) scale(1.1) translateZ(-120px);
-}
+   (se quitó la luz y la plataforma para que la página sea más liviana; solo queda el giro) */
 @keyframes uv-rabbit-rotate{
   0%{ transform: rotate3d(0,1,0,0deg); }
   100%{ transform: rotate3d(0,1,0,360deg); }
@@ -248,6 +210,7 @@ img{ max-width:100%; display:block; }
 .uv-owl{
   display:block;
   width: min(320px, 85vw);
+  --owl-w: min(320px, 85vw);
   height: 250px;
   border-radius: 10px;
   padding: 1px;
@@ -260,24 +223,24 @@ img{ max-width:100%; display:block; }
 .uv-owl--graficos{
   --owl-outer: radial-gradient(circle 230px at 0% 0%, #b6e6a8, #0c0d0d);
   --owl-inner: radial-gradient(circle 280px at 0% 0%, #3b7a4a, #0c0d0d);
-  --owl-border: #d40606;
+  --owl-border: #be0808;
   --owl-ray: #bfe5b2;
   --owl-dot: #d2f5c6;
-  --owl-line: #b91313;
+  --owl-line: #ff0000;
   --owl-line-top: linear-gradient(90deg, #7fb372 30%, #1d2e21 70%);
-  --owl-line-left: linear-gradient(180deg, #be1010 30%, #1d2e21 70%);
+  --owl-line-left: linear-gradient(180deg, #bd0b0b 30%, #1d2e21 70%);
   --owl-text: linear-gradient(45deg, #8FBF7F 4%, #fff, #8FBF7F);
 }
 /* Digital: verde con morado */
 .uv-owl--digitales{
   --owl-outer: radial-gradient(circle 230px at 0% 0%, #b6e6a8, #8b5cf6 42%, #0c0d0d);
   --owl-inner: radial-gradient(circle 280px at 0% 0%, #3b7a4a, #3a1d7a 55%, #0c0d0d);
-  --owl-border: #03c02c;
+  --owl-border: #089408;
   --owl-ray: #cdb8fa;
   --owl-dot: #e6dbff;
-  --owl-line: #099b11;
-  --owl-line-top: linear-gradient(90deg, #0fb137 30%, #241a3d 70%);
-  --owl-line-left: linear-gradient(180deg, #8b14af 30%, #241a3d 70%);
+  --owl-line: #099114;
+  --owl-line-top: linear-gradient(90deg, #0db336 30%, #241a3d 70%);
+  --owl-line-left: linear-gradient(180deg, #740b74 30%, #241a3d 70%);
   --owl-text: linear-gradient(45deg, #8FBF7F 4%, #fff, #B794F6);
 }
 
@@ -289,15 +252,18 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 0 10px var(--owl-dot);
   border-radius: 100px;
   z-index: 2;
-  right: 10%;
-  top: 10%;
+  left: 0;
+  top: 0;
+  will-change: transform;
   animation: uv-owl-move-dot 6s linear infinite;
 }
 @keyframes uv-owl-move-dot{
-  0%, 100%{ top: 10%; right: 10%; }
-  25%{ top: 10%; right: calc(100% - 35px); }
-  50%{ top: calc(100% - 30px); right: calc(100% - 35px); }
-  75%{ top: calc(100% - 30px); right: 10%; }
+  /* mismo recorrido del original (arriba-derecha → arriba-izquierda → abajo-izquierda → abajo-derecha),
+     pero con transform para no recalcular el layout en cada cuadro */
+  0%, 100%{ transform: translate(calc(var(--owl-w) * 0.9 - 6px), 24px); }
+  25%{ transform: translate(30px, 24px); }
+  50%{ transform: translate(30px, 219px); }
+  75%{ transform: translate(calc(var(--owl-w) * 0.9 - 6px), 219px); }
 }
 .uv-owl__card{
   z-index: 1;
@@ -439,9 +405,9 @@ img{ max-width:100%; display:block; }
   background-color: #2F5D3A;
   background-image: linear-gradient(
     43deg,
-    #801a1a 0%,
-    #440303 46%,
-    #920b0b 100%
+    #5e0906 0%,
+    #7a1a1a 46%,
+    #28c52f 100%
   );
   border: 1.5px solid var(--verde-bambu-claro);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -1120,6 +1086,7 @@ var(--morado), var(--verde-bambu-claro));
 /* ---------- 15. RESPONSIVE ---------- */
 @media (max-width: 900px){
   .navbar__nav{ gap: 1.2rem; }
+  body{ background-attachment: scroll; } /* el fondo fijo se traba en celulares */
 }
 
 @media (max-width: 640px){
@@ -1129,7 +1096,7 @@ var(--morado), var(--verde-bambu-claro));
   .navbar__nav a{ font-size:.72rem; }
 
   .hero{ padding: 4.5rem 6vw 3rem; }
-  .hero__logo-stage{ --rabbit-scale: 1.5; margin-bottom: 4.5rem; }
+  .hero__logo-stage{ margin-bottom: 1.5rem; }
   .funnel__cards{ flex-direction:column; align-items:center; }
 
   .grid-cards{ grid-template-columns: 1fr; }
