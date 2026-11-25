@@ -5,13 +5,15 @@
    2. Reset y base
    3. Cursor personalizado
    4. Navbar
-   5. Hero (Inicio) + logo con scroll-driven 3D
-   6. Embudo de ventas (funnel)
+   5. Hero (Inicio) + logo giratorio sobre plataforma luminosa
+   6. Embudo de ventas (funnel) — tarjetas "moody-owl"
    7. Glow orbs (scroll reveal)
    8. Bamboo divider (elemento firma)
-   9. Servicios — grid y tarjetas flip 3D + glassmorphism
-   10. Tarjetas de mantenimiento — clip-path morph
-   11. Botones — ripple + border animation
+   9. Servicios — grid y tarjetas flip
+      9.1 Publicidad gráfica — "loud-treefrog"
+      9.2 Publicidad digital — "loud-frog"
+   10. Mantenimiento de redes — "cowardly-eagle"
+   11. Botón de WhatsApp — "unlucky-elephant"
    12. Cierre motivacional
    13. Contactos + WhatsApp flotante
    14. Footer
@@ -23,13 +25,17 @@
   --verde-bambu: #2F5D3A;
   --verde-bambu-oscuro: #1D3B24;
   --verde-bambu-claro: #8FBF7F;
+  --morado: #7C3AED;
+  --morado-oscuro: #3B1D78;
+  --morado-claro: #B794F6;
   --rojo-oscuro: #6E1E2B;
   --rojo-brillante: #A8324A;
   --crema: #F4F1E6;
   --negro: #14170F;
   --blanco: #FFFFFF;
 
-  --fuente-display: 'Fraunces', serif;
+  /* Títulos y números: tipografía display nueva (antes Fraunces, serif) */
+  --fuente-display: 'Bricolage Grotesque', 'Manrope', sans-serif;
   --fuente-cuerpo: 'Manrope', sans-serif;
   --fuente-mono: 'JetBrains Mono', monospace;
 
@@ -55,9 +61,11 @@ body{
 
 h1,h2,h3,h4{
   font-family: var(--fuente-display);
+  font-optical-sizing: auto;
   margin: 0 0 .4em;
-  font-weight: 600;
-  letter-spacing: .01em;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.01em;
 }
 
 a{ color: inherit; text-decoration: none; cursor: url('img/hoja-bambu.png') 4 4, pointer; }
@@ -96,40 +104,40 @@ img{ max-width:100%; display:block; }
 }
 .navbar__nav a:hover::after{ width:100%; }
 
-/* ---------- 5. HERO + LOGO SCROLL-DRIVEN 3D ---------- */
+/* ---------- 5. HERO + LOGO GIRATORIO SOBRE PLATAFORMA LUMINOSA ---------- */
 .hero{
   min-height: 100svh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   text-align:center;
   padding: 6rem 5vw 4rem;
   position: relative;
-  perspective: 1200px;
+  overflow-x: clip; /* la luz de la plataforma es más ancha que la pantalla en móvil */
 }
+/* El texto del hero queda por encima de la luz */
+.hero__title, .hero__tagline, .funnel, .hero > .bamboo-divider{ position: relative; z-index: 1; }
 
 .hero__logo-stage{
   position:relative;
   width: min(320px, 60vw);
   aspect-ratio: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 5rem; /* espacio para que la luz de la plataforma no tape el título */
+  --rabbit-scale: 1.6; /* tamaño de la plataforma respecto al original (200px) */
+  --rabbit-top: 70%;   /* altura del centro de la plataforma dentro del escenario */
+}
+
+/* Logo: gira sobre su eje vertical como el objeto original (10s, lineal, infinito).
+   Tiene dos caras para que se lea bien de los dos lados. */
+.hero__logo-spin{
+  position:absolute; inset:0;
   transform-style: preserve-3d;
-  /* Animación disparada por scroll (Chrome/Edge modernos).
-     Rota el logo en X/Y/Z a medida que la sección Inicio pasa por el viewport. */
-  animation: logo-scroll-rotate linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 60%;
+  animation: uv-rabbit-rotate 10s infinite linear;
 }
-@keyframes logo-scroll-rotate{
-  from{ transform: perspective(1200px) rotateX(35deg) rotateY(-25deg) rotateZ(-6deg) scale(.85); }
-  to{ transform: perspective(1200px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); }
+.hero__logo-face{
+  position:absolute; inset:0;
+  backface-visibility: hidden;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,.45));
 }
-/* Fallback para navegadores sin animation-timeline: rotación de entrada simple */
-@supports not (animation-timeline: view()){
-  .hero__logo-stage{ animation: logo-fallback-rotate 1.4s ease-out both; }
-  @keyframes logo-fallback-rotate{
-    from{ transform: perspective(1200px) rotateX(30deg) rotateY(-20deg) scale(.9); opacity:0; }
-    to{ transform: perspective(1200px) rotateX(0) rotateY(0) scale(1); opacity:1; }
-  }
-}
+.hero__logo-face--back{ transform: rotateY(180deg); }
 
 .hero__logo{
   position:absolute; inset:0;
@@ -139,7 +147,6 @@ img{ max-width:100%; display:block; }
 }
 .hero__logo--active{ opacity:0; }
 /* Al llegar al final del rango de scroll, se revela la versión "N" del logo */
-.hero__logo-stage{ }
 @supports (animation-timeline: view()){
   .hero__logo--active{
     animation: logo-crossfade linear;
@@ -153,15 +160,71 @@ img{ max-width:100%; display:block; }
 }
 
 .hero__title{
-  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-size: clamp(3rem, 8vw, 5.8rem);
+  font-weight: 800;
   color: var(--verde-bambu-claro);
-  letter-spacing: .08em;
+  letter-spacing: .01em;
 }
 .hero__tagline{
   max-width: 46ch;
   font-size: 1.15rem;
   color: rgba(244,241,230,.85);
   margin-bottom: 2.5rem;
+}
+
+/* From Uiverse.io by Saad3092003 - https://uiverse.io/Saad3092003/chatty-rabbit-71
+   MIT License, Copyright (c) Saad3092003 (Saad Shaikh)
+   (clases renombradas con el prefijo .uv-rabbit para no chocar con otras) */
+.uv-rabbit{
+  position:absolute;
+  left:50%; top: var(--rabbit-top);
+  width:200px; height:200px;
+  margin: -100px 0 0 -100px;
+  transform: scale(var(--rabbit-scale));
+  pointer-events:none;
+}
+.uv-rabbit__obj{
+  position: relative;
+  width: 200px;
+  height: 200px;
+
+  transform-style: preserve-3d;
+  transition: 0.5s all;
+  transform: rotateX(-25deg) rotateY(20deg);
+}
+.uv-rabbit__child{
+  animation: uv-rabbit-rotate 10s infinite linear;
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.uv-rabbit__child::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  filter: blur(20px);
+  box-shadow: 0 0 200px 15px white;
+  transform: rotateX(90deg) scale(1.1) translateZ(-120px);
+}
+.uv-rabbit__plate{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(21, 21, 21);
+  transform: rotateX(90deg) translateZ(100px);
+  animation: uv-rabbit-updown 4s infinite ease-in-out;
+}
+@keyframes uv-rabbit-rotate{
+  0%{ transform: rotate3d(0,1,0,0deg); }
+  100%{ transform: rotate3d(0,1,0,360deg); }
+}
+@keyframes uv-rabbit-updown{
+  0%{ transform: translateY(100px) rotateX(90deg) translateZ(100px); }
+  50%{ transform: translateY(200px) rotateX(90deg) translateZ(100px); }
+  100%{ transform: translateY(100px) rotateX(90deg) translateZ(100px); }
 }
 
 /* ---------- 8. BAMBOO DIVIDER (elemento firma) ---------- */
@@ -180,38 +243,125 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 0 18px rgba(143,191,127,.45);
 }
 
-/* ---------- 6. FUNNEL ---------- */
+/* ---------- 6. FUNNEL — tarjetas "moody-owl" ---------- */
 .funnel__question{
   font-family: var(--fuente-display);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 1.8rem;
 }
 .funnel__cards{
-  display:flex; gap: 1.5rem; flex-wrap: wrap; justify-content:center;
+  display:flex; gap: 1.8rem; flex-wrap: wrap; justify-content:center;
 }
-.funnel__card{
+
+/* From Uiverse.io by Spacious74 - https://uiverse.io/Spacious74/moody-owl-18
+   MIT License, Copyright (c) Spacious74 (VishalS)
+   (clases renombradas con el prefijo .uv-owl; colores adaptados a verde / verde + morado) */
+.uv-owl{
+  display:block;
   width: min(320px, 85vw);
-  padding: 2rem 1.6rem;
-  border-radius: var(--radio);
-  border: 1px solid rgba(244,241,230,.15);
-  background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
-  backdrop-filter: blur(6px);
-  display:flex; flex-direction:column; gap:.4rem; text-align:left;
-  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  height: 250px;
+  border-radius: 10px;
+  padding: 1px;
+  background: var(--owl-outer);
+  position: relative;
 }
-.funnel__card:hover{
-  transform: translateY(-6px);
-  box-shadow: var(--sombra);
+.uv-owl:focus-visible{ outline: 2px solid var(--verde-bambu-claro); outline-offset: 5px; }
+
+/* Gráfica: verde con borde */
+.uv-owl--graficos{
+  --owl-outer: radial-gradient(circle 230px at 0% 0%, #b6e6a8, #0c0d0d);
+  --owl-inner: radial-gradient(circle 280px at 0% 0%, #3b7a4a, #0c0d0d);
+  --owl-border: #1f3a26;
+  --owl-ray: #bfe5b2;
+  --owl-dot: #d2f5c6;
+  --owl-line: #2d4d34;
+  --owl-line-top: linear-gradient(90deg, #7fb372 30%, #1d2e21 70%);
+  --owl-line-left: linear-gradient(180deg, #7fb372 30%, #1d2e21 70%);
+  --owl-text: linear-gradient(45deg, #8FBF7F 4%, #fff, #8FBF7F);
 }
-.funnel__card--graficos:hover{ border-color: var(--verde-bambu-claro); }
-.funnel__card--digitales:hover{ border-color: var(--rojo-brillante); }
-.funnel__card-eyebrow{
-  font-family: var(--fuente-mono); font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
-  color: var(--verde-bambu-claro);
+/* Digital: verde con morado */
+.uv-owl--digitales{
+  --owl-outer: radial-gradient(circle 230px at 0% 0%, #b6e6a8, #8b5cf6 42%, #0c0d0d);
+  --owl-inner: radial-gradient(circle 280px at 0% 0%, #3b7a4a, #3a1d7a 55%, #0c0d0d);
+  --owl-border: #2a1d4d;
+  --owl-ray: #cdb8fa;
+  --owl-dot: #e6dbff;
+  --owl-line: #3a2a5e;
+  --owl-line-top: linear-gradient(90deg, #9b7be0 30%, #241a3d 70%);
+  --owl-line-left: linear-gradient(180deg, #7fb372 30%, #241a3d 70%);
+  --owl-text: linear-gradient(45deg, #8FBF7F 4%, #fff, #B794F6);
 }
-.funnel__card--digitales .funnel__card-eyebrow{ color: var(--rojo-brillante); }
-.funnel__card-title{ font-family: var(--fuente-display); font-size:1.5rem; }
-.funnel__card-sub{ font-size:.9rem; color: rgba(244,241,230,.7); }
+
+.uv-owl__dot{
+  width: 5px;
+  aspect-ratio: 1;
+  position: absolute;
+  background-color: var(--owl-dot);
+  box-shadow: 0 0 10px var(--owl-dot);
+  border-radius: 100px;
+  z-index: 2;
+  right: 10%;
+  top: 10%;
+  animation: uv-owl-move-dot 6s linear infinite;
+}
+@keyframes uv-owl-move-dot{
+  0%, 100%{ top: 10%; right: 10%; }
+  25%{ top: 10%; right: calc(100% - 35px); }
+  50%{ top: calc(100% - 30px); right: calc(100% - 35px); }
+  75%{ top: calc(100% - 30px); right: 10%; }
+}
+.uv-owl__card{
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  border: solid 1px var(--owl-border);
+  background: var(--owl-inner);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  color: #fff;
+}
+.uv-owl__ray{
+  width: 220px;
+  height: 45px;
+  border-radius: 100px;
+  position: absolute;
+  background-color: var(--owl-ray);
+  opacity: 0.4;
+  box-shadow: 0 0 50px #fff;
+  filter: blur(10px);
+  transform-origin: 10%;
+  top: 0%;
+  left: 0;
+  transform: rotate(40deg);
+}
+.uv-owl__text{
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 9vw, 2.9rem);
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  text-align: center;
+  padding: 0 13%;
+  background: var(--owl-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.uv-owl__line{
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background-color: var(--owl-line);
+}
+.uv-owl__line--top{ top: 10%; background: var(--owl-line-top); }
+.uv-owl__line--bottom{ bottom: 10%; }
+.uv-owl__line--left{ left: 10%; width: 1px; height: 100%; background: var(--owl-line-left); }
+.uv-owl__line--right{ right: 10%; width: 1px; height: 100%; }
 
 /* ---------- 7. GLOW ORBS ---------- */
 .glow-field{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:-1; }
@@ -242,185 +392,707 @@ img{ max-width:100%; display:block; }
   font-family: var(--fuente-mono); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
   color: var(--verde-bambu-claro);
 }
-.bloque--digitales .bloque__eyebrow{ color: var(--rojo-brillante); }
-.bloque__title{ font-size: clamp(1.9rem, 4vw, 2.8rem); }
-.bloque__nota{ color: rgba(244,241,230,.75); font-size:.95rem; }
+.bloque--digitales .bloque__eyebrow{ color: var(--morado-claro); }
+.bloque__title{ font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; }
+.bloque__nota{ color: rgba(244,241,230,.75); font-size:1.1rem; }
 
 .grid-cards{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+/* Las tarjetas gráficas descansan inclinadas: más aire vertical para que no se pisen */
+.grid-cards--graf{ gap: 3.4rem 1.8rem; padding-top: 1rem; }
+
+/* ---------- 9.1 GRÁFICAS — "loud-treefrog" (frente: título + precio / dorso: detalles) ----------
+   From Uiverse.io by gharsh11032000 - https://uiverse.io/gharsh11032000/loud-treefrog-81
+   MIT License, Copyright (c) gharsh11032000 (Harsh Gupta), gharsh11032000 (Harsh Gupta)
+   (clases renombradas con el prefijo .uv-treefrog; verde con borde; se agregó el giro frente/dorso) */
+.uv-treefrog{
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 210px;
+  margin-inline: auto;
+  cursor: url('img/hoja-bambu.png') 4 4, pointer;
+}
+.uv-treefrog:focus-visible{ outline: 2px solid var(--verde-bambu-claro); outline-offset: 8px; border-radius: 12px; }
+
+.uv-treefrog__card{
+  position: absolute; inset: 0;
+  border-radius: 8px;
+  color: white;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translate3d(7%, -2%, 0px) scale3d(0.9, 0.8, 1) rotateX(15deg)
+    rotateY(-9deg) rotateZ(32deg);
+}
+/* hover: se endereza, escala a 1 y proyecta sombra (se detecta sobre el contenedor fijo para evitar parpadeos) */
+.uv-treefrog:hover .uv-treefrog__card,
+.uv-treefrog:focus-visible .uv-treefrog__card{
+  transform: rotateY(0) rotateX(0) scale(1);
 }
 
-/* --- tarjetas: checkbox oculto + label flip 3D --- */
-.card{ display:block; perspective: 1400px; cursor: url('img/hoja-bambu.png') 4 4, pointer; }
-.card__check{ position:absolute; opacity:0; width:0; height:0; }
-.card__inner{
-  position: relative;
-  height: 190px;
-  border-radius: var(--radio);
+/* Giro frente / dorso */
+.uv-treefrog__inner{
+  position: absolute; inset: 0;
   transform-style: preserve-3d;
   transition: transform .7s cubic-bezier(.2,.8,.2,1);
 }
-/* Gráficos: flip en X/Y — Digitales: flip en Y/Z */
-.card--graf:hover .card__inner{ transform: rotateX(180deg) rotateY(6deg); }
-.card--dig:hover .card__inner{ transform: rotateY(180deg) rotateZ(-3deg); }
+.uv-treefrog:hover .uv-treefrog__inner,
+.uv-treefrog:focus-visible .uv-treefrog__inner{ transform: rotateX(180deg); }
 
-.card__front, .card__back{
-  position:absolute; inset:0;
-  border-radius: var(--radio);
+.uv-treefrog__face{
+  position: absolute; inset: 0;
+  border-radius: 8px;
+  overflow: hidden;
   backface-visibility: hidden;
-  padding: 1.4rem;
-  display:flex; flex-direction:column; justify-content:center; gap:.5rem;
+  background-color: #2F5D3A;
+  background-image: linear-gradient(
+    43deg,
+    #1D3B24 0%,
+    #2F5D3A 46%,
+    #8FBF7F 100%
+  );
+  border: 1.5px solid var(--verde-bambu-claro);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.uv-treefrog__back{ transform: rotateX(180deg); }
+.uv-treefrog:hover .uv-treefrog__face,
+.uv-treefrog:focus-visible .uv-treefrog__face{
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 22px rgba(143,191,127,.35);
 }
 
-/* Frente: border animation (borde que se dibuja/ilumina) */
-.card__front{
-  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.015));
-  border: 1px solid rgba(244,241,230,.14);
-  overflow:hidden;
+.uv-treefrog__content{
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
 }
-.card__front::before{
-  content:'';
-  position:absolute; inset:0;
-  border-radius: var(--radio);
-  padding: 1.5px;
-  background: conic-gradient(from 0deg, var(--verde-bambu-claro), transparent 30%, transparent 70%, var(--verde-bambu-claro));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity:0;
-  animation: none;
-  transition: opacity .4s ease;
+.uv-treefrog__title{
+  font-size: clamp(1.35rem, 1.15rem + .7vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: .01em;
+  color: inherit;
+  text-transform: uppercase;
+  margin: 0;
 }
-.card--dig .card__front::before{
-  background: conic-gradient(from 0deg, var(--rojo-brillante), transparent 30%, transparent 70%, var(--rojo-brillante));
-}
-.card:hover .card__front::before{
-  opacity:1;
-  animation: rotar-borde 3s linear infinite;
-}
-@keyframes rotar-borde{ to{ transform: rotate(360deg); } }
-
-.card__front h3{ font-size:1.15rem; }
-.card__price{ font-family: var(--fuente-mono); font-size:1.3rem; color: var(--verde-bambu-claro); }
-.card--dig .card__price{ color: var(--rojo-brillante); }
-.card__added{
-  position:absolute; top:.9rem; right:1rem;
-  font-family: var(--fuente-mono); font-size:.75rem;
-  color: var(--verde-bambu-claro);
-  opacity:0; transform: translateY(-6px);
-  transition: opacity .3s ease, transform .3s ease;
-}
-
-/* Trasera: glassmorphism animado */
-.card__back{
-  background: rgba(244,241,230,.08);
-  backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(143,191,127,.35);
-  transform: rotateX(180deg);
-  box-shadow: inset 0 0 30px rgba(143,191,127,.08);
-  transition: border-color .4s ease, box-shadow .4s ease;
-}
-.card--dig .card__back{
-  transform: rotateY(180deg) rotateZ(3deg);
-  border-color: rgba(168,50,74,.4);
-  box-shadow: inset 0 0 30px rgba(168,50,74,.1);
-}
-.card:hover .card__back{
-  box-shadow: inset 0 0 46px rgba(143,191,127,.22), 0 0 24px rgba(143,191,127,.18);
-}
-.card--dig:hover .card__back{
-  box-shadow: inset 0 0 46px rgba(168,50,74,.22), 0 0 24px rgba(168,50,74,.18);
-}
-.card__back p{ font-size:.92rem; color: rgba(244,241,230,.88); margin:0; }
-
-/* Estado "agregado al carrito" vía :checked */
-.card__check:checked ~ .card__inner .card__front{
-  border-color: var(--verde-bambu-claro);
-  box-shadow: 0 0 0 2px var(--verde-bambu-claro), 0 0 22px rgba(143,191,127,.4);
-}
-.card--dig .card__check:checked ~ .card__inner .card__front{
-  border-color: var(--rojo-brillante);
-  box-shadow: 0 0 0 2px var(--rojo-brillante), 0 0 22px rgba(168,50,74,.4);
-}
-.card__check:checked ~ .card__inner .card__added{ opacity:1; transform:translateY(0); }
-
-/* ---------- 10. MANTENIMIENTO — clip-path morph ---------- */
-.submaint__title{
-  margin: 3.5rem 0 1.6rem;
-  font-size: 1.4rem;
+.uv-treefrog__price{
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin: 0;
   color: var(--crema);
 }
-.submaint__title span{ font-family: var(--fuente-cuerpo); font-size:.85rem; color: rgba(244,241,230,.6); font-weight:400; }
+.uv-treefrog__para{
+  color: inherit;
+  opacity: 0.88;
+  font-size: 1.12rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Cortinas que se abren hacia los costados en el hover (solo frente) */
+.uv-treefrog__front::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1;
+}
+.uv-treefrog:hover .uv-treefrog__front::before,
+.uv-treefrog:focus-visible .uv-treefrog__front::before{ transform: translateX(-100%); }
+
+.uv-treefrog__front::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1;
+}
+.uv-treefrog:hover .uv-treefrog__front::after,
+.uv-treefrog:focus-visible .uv-treefrog__front::after{ transform: translateX(100%); }
+
+/* ---------- 9.2 DIGITALES — "loud-frog" (frente: título + precio / dorso: detalles) ----------
+   From Uiverse.io by IWhat1 - https://uiverse.io/IWhat1/loud-frog-61
+   MIT License, Copyright (c) IWhat1, IWhat1 (CHINTA JAYA KRISHNA), IWhat1 (CHINTA JAYA KRISHNA)
+   (clases renombradas con el prefijo .uv-frog; degradado adaptado a verde + morado) */
+.uv-frog{
+  width: 100%;
+  max-width: 280px;
+  height: 300px;
+  margin-inline: auto;
+  perspective: 900px;
+}
+.uv-frog:focus-visible{ outline: 2px solid var(--morado-claro); outline-offset: 6px; border-radius: 2rem; }
+
+.uv-frog__card{
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+  position: relative;
+  transition: transform 1500ms;
+  transform-style: preserve-3d;
+  border-radius: 2rem;
+}
+.uv-frog:hover > .uv-frog__card,
+.uv-frog:focus-visible > .uv-frog__card{
+  cursor: pointer;
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+.uv-frog__front, .uv-frog__back{
+  height: 100%;
+  width: 100%;
+  border-radius: 2rem;
+  position: absolute;
+  box-shadow: 0 0 10px 2px rgba(50, 50, 50, 1);
+  backface-visibility: hidden;
+  color: aliceblue;
+  background: linear-gradient(-135deg,
+var(--morado), var(--verde-bambu-claro));
+}
+.uv-frog__front, .uv-frog__back{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 1.4rem;
+  text-align: center;
+}
+.uv-frog__back{ transform: rotateY(180deg) rotateZ(180deg); }
+
+.uv-frog__heading{
+  font-size: clamp(1.7rem, 1.4rem + .8vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(30, 10, 70, .45);
+}
+.uv-frog__price{
+  font-family: var(--fuente-display);
+  font-size: 2.7rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(30, 10, 70, .45);
+}
+.uv-frog__detail{
+  font-size: 1.15rem;
+  line-height: 1.45;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(30, 10, 70, .45);
+}
+
+/* ---------- 10. MANTENIMIENTO — "cowardly-eagle" (frente: título + precio / dorso: detalles) ----------
+   From Uiverse.io by 00Kubi - https://uiverse.io/00Kubi/cowardly-eagle-56
+   MIT License, Copyright (c) kennyotsu (kotsu), 00Kubi (Kubi)
+   (clases renombradas con el prefijo .uv-eagle; colores adaptados a verde + morado) */
+.submaint__title{
+  margin: 3.5rem 0 1.8rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: var(--crema);
+}
+.submaint__title span{ font-family: var(--fuente-cuerpo); font-size:1rem; color: rgba(244,241,230,.6); font-weight:400; }
 
 .grid-maint{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
 }
-.maint-card{
-  padding: 2rem 1.6rem;
-  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.015));
-  border: 1px solid rgba(244,241,230,.12);
-  clip-path: polygon(0 6%, 94% 0, 100% 92%, 6% 100%);
-  transition: clip-path .6s cubic-bezier(.2,.8,.2,1), transform .4s ease, border-color .4s ease;
-}
-.maint-card:hover{
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transform: translateY(-4px);
-}
-.maint-card--basico:hover{ border-color: var(--verde-bambu-claro); }
-.maint-card--estandar:hover{ border-color: var(--crema); }
-.maint-card--premium:hover{ border-color: var(--rojo-brillante); }
-.maint-card__price{ font-family: var(--fuente-mono); font-size:1.5rem; color: var(--verde-bambu-claro); }
-.maint-card--premium .maint-card__price{ color: var(--rojo-brillante); }
-.maint-card__price span{ font-size:.85rem; color: rgba(244,241,230,.6); }
-.maint-card__detail{ font-size:.9rem; color: rgba(244,241,230,.78); }
 
-/* ---------- 11. BOTONES — ripple + border animation ---------- */
-.btn-ripple{
+.uv-eagle{
+  --eg-green: 143, 191, 127;
+  --eg-purple: 168, 85, 247;
   position: relative;
-  display:inline-block;
-  padding: .9rem 1.8rem;
-  font-family: var(--fuente-mono); font-size:.85rem; letter-spacing:.06em;
-  color: var(--negro);
-  background: var(--verde-bambu-claro);
-  border-radius: 999px;
-  overflow:hidden;
-  isolation:isolate;
+  width: min(100%, 280px);
+  height: 374px;
+  margin-inline: auto;
+  transition: 200ms;
 }
-.btn-ripple::after{
-  content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 60%);
-  transform: scale(0);
-  opacity:0;
-  transition: transform .6s ease, opacity .6s ease;
-  z-index:-1;
+.uv-eagle:active{
+  width: calc(min(100%, 280px) - 14px);
+  height: 360px;
 }
-.btn-ripple:hover::after, .btn-ripple:active::after{
-  transform: scale(2.4);
-  opacity:1;
+.uv-eagle:focus-visible{ outline: 2px solid var(--morado-claro); outline-offset: 6px; border-radius: 22px; }
+
+.uv-eagle__card{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  background: linear-gradient(45deg, #1a1030, #102418);
+  border: 2px solid rgba(var(--eg-green), 0.22);
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotateZ(0deg);
+}
+.uv-eagle__content{
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.btn-border-anim{
-  position:relative;
+/* Frente (título + precio) y dorso (detalles): giran dentro de la tarjeta al pasar el mouse */
+.uv-eagle__face{
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.4rem 1.2rem 3rem;
+  backface-visibility: hidden;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
 }
-.btn-border-anim::before{
-  content:'';
-  position:absolute; inset:-2px;
-  border-radius: inherit;
-  padding: 2px;
-  background: conic-gradient(from 0deg, var(--verde-bambu-claro), var(--rojo-brillante), var(--verde-bambu-claro));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity:0;
-  transition: opacity .4s ease;
-  animation: rotar-borde 4s linear infinite;
+.uv-eagle__face--front{ transform: perspective(800px) rotateY(0deg); }
+.uv-eagle__face--back{ transform: perspective(800px) rotateY(-180deg); }
+.uv-eagle:hover .uv-eagle__face--front,
+.uv-eagle:focus-visible .uv-eagle__face--front{ transform: perspective(800px) rotateY(180deg); }
+.uv-eagle:hover .uv-eagle__face--back,
+.uv-eagle:focus-visible .uv-eagle__face--back{ transform: perspective(800px) rotateY(0deg); }
+
+.uv-eagle__title{
+  font-family: var(--fuente-display);
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 1.1rem;
+  background: linear-gradient(45deg, #8FBF7F, #B794F6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(var(--eg-green), 0.3));
 }
-.btn-border-anim:hover::before{ opacity:1; }
+.uv-eagle__price{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .4rem;
+}
+.uv-eagle__amount{
+  font-family: var(--fuente-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(90deg, #8FBF7F, #A855F7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.uv-eagle__per{
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.uv-eagle__back-title{
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  background: linear-gradient(90deg, #8FBF7F, #A855F7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.uv-eagle__detail{
+  font-size: 1.15rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.uv-eagle__prompt{
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: 300ms ease-in-out;
+  position: absolute;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.uv-eagle__glows{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.uv-eagle__glow-1,
+.uv-eagle__glow-2,
+.uv-eagle__glow-3{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.uv-eagle__glow-1{
+  top: -20px;
+  left: -20px;
+  background: radial-gradient(circle at center, rgba(var(--eg-green), 0.3) 0%, rgba(var(--eg-green), 0) 70%);
+}
+.uv-eagle__glow-2{
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle at center, rgba(var(--eg-purple), 0.3) 0%, rgba(var(--eg-purple), 0) 70%);
+}
+.uv-eagle__glow-3{
+  bottom: -20px;
+  left: 30%;
+  background: radial-gradient(circle at center, rgba(var(--eg-green), 0.3) 0%, rgba(var(--eg-green), 0) 70%);
+}
+
+.uv-eagle__particles span{
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #8FBF7F;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.uv-eagle__particles span:nth-child(even){ background: #B794F6; }
+
+/* Hover / foco: se encienden brillos, partículas y el resplandor de fondo */
+.uv-eagle__tracker:hover ~ .uv-eagle__card .uv-eagle__glows div,
+.uv-eagle:focus-visible .uv-eagle__glows div{
+  opacity: 1;
+}
+.uv-eagle__tracker:hover ~ .uv-eagle__card .uv-eagle__particles span,
+.uv-eagle:focus-visible .uv-eagle__particles span{
+  animation: uv-eagle-particle-float 2s infinite;
+}
+@keyframes uv-eagle-particle-float{
+  0%{ transform: translate(0, 0); opacity: 0; }
+  50%{ opacity: 1; }
+  100%{ transform: translate(calc(var(--x, 0) * 30px), calc(var(--y, 0) * 30px)); opacity: 0; }
+}
+.uv-eagle__particles span:nth-child(1){ --x: 1; --y: -1; top: 40%; left: 20%; }
+.uv-eagle__particles span:nth-child(2){ --x: -1; --y: -1; top: 60%; right: 20%; }
+.uv-eagle__particles span:nth-child(3){ --x: 0.5; --y: 1; top: 20%; left: 40%; }
+.uv-eagle__particles span:nth-child(4){ --x: -0.5; --y: 1; top: 80%; right: 40%; }
+.uv-eagle__particles span:nth-child(5){ --x: 1; --y: 0.5; top: 30%; left: 60%; }
+.uv-eagle__particles span:nth-child(6){ --x: -1; --y: 0.5; top: 70%; right: 60%; }
+
+.uv-eagle__card::before{
+  content: "";
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--eg-green), 0.12) 0%,
+    rgba(var(--eg-purple), 0.08) 50%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+.uv-eagle__tracker:hover ~ .uv-eagle__card::before{ opacity: 1; }
+
+/* Zonas sensibles al mouse (cuadrícula 5×5) que inclinan la tarjeta */
+.uv-eagle__canvas{
+  perspective: 800px;
+  inset: 0;
+  z-index: 200;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+}
+.uv-eagle__tracker{
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
+.uv-eagle__tracker:hover{ cursor: pointer; }
+.uv-eagle__tracker:hover ~ .uv-eagle__card .uv-eagle__prompt{ opacity: 0; }
+.uv-eagle__tracker:hover ~ .uv-eagle__card{
+  transition: 125ms ease-in-out;
+  filter: brightness(1.1);
+}
+.uv-eagle:hover .uv-eagle__card::before{
+  transition: 200ms;
+  content: "";
+  opacity: 80%;
+}
+
+/* Posición de cada zona (tr-1 … tr-25) en la cuadrícula: columna = n mod 5, fila = n div 5 */
+.uv-eagle__tracker:nth-child(5n+1){ grid-column: 1; }
+.uv-eagle__tracker:nth-child(5n+2){ grid-column: 2; }
+.uv-eagle__tracker:nth-child(5n+3){ grid-column: 3; }
+.uv-eagle__tracker:nth-child(5n+4){ grid-column: 4; }
+.uv-eagle__tracker:nth-child(5n){ grid-column: 5; }
+.uv-eagle__tracker:nth-child(-n+5){ grid-row: 1; }
+.uv-eagle__tracker:nth-child(n+6):nth-child(-n+10){ grid-row: 2; }
+.uv-eagle__tracker:nth-child(n+11):nth-child(-n+15){ grid-row: 3; }
+.uv-eagle__tracker:nth-child(n+16):nth-child(-n+20){ grid-row: 4; }
+.uv-eagle__tracker:nth-child(n+21):nth-child(-n+25){ grid-row: 5; }
+
+/* Inclinación según la zona: filas 20°, 10°, 0°, -10°, -20° (rotateX) · columnas -10°, -5°, 0°, 5°, 10° (rotateY) */
+.uv-eagle__tracker:nth-child(5n+1):hover ~ .uv-eagle__card{ --ry: -10deg; }
+.uv-eagle__tracker:nth-child(5n+2):hover ~ .uv-eagle__card{ --ry: -5deg; }
+.uv-eagle__tracker:nth-child(5n+3):hover ~ .uv-eagle__card{ --ry: 0deg; }
+.uv-eagle__tracker:nth-child(5n+4):hover ~ .uv-eagle__card{ --ry: 5deg; }
+.uv-eagle__tracker:nth-child(5n):hover ~ .uv-eagle__card{ --ry: 10deg; }
+.uv-eagle__tracker:nth-child(-n+5):hover ~ .uv-eagle__card{ --rx: 20deg; }
+.uv-eagle__tracker:nth-child(n+6):nth-child(-n+10):hover ~ .uv-eagle__card{ --rx: 10deg; }
+.uv-eagle__tracker:nth-child(n+11):nth-child(-n+15):hover ~ .uv-eagle__card{ --rx: 0deg; }
+.uv-eagle__tracker:nth-child(n+16):nth-child(-n+20):hover ~ .uv-eagle__card{ --rx: -10deg; }
+.uv-eagle__tracker:nth-child(n+21):nth-child(-n+25):hover ~ .uv-eagle__card{ --rx: -20deg; }
+
+.uv-eagle--noselect{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.uv-eagle__glare{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.uv-eagle:hover .uv-eagle__glare{ opacity: 1; }
+
+.uv-eagle__lines span{
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--eg-purple), 0.25),
+    transparent
+  );
+}
+.uv-eagle__lines span:nth-child(1){
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: uv-eagle-line-grow 3s linear infinite;
+}
+.uv-eagle__lines span:nth-child(2){
+  top: 40%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: uv-eagle-line-grow 3s linear infinite 1s;
+}
+.uv-eagle__lines span:nth-child(3){
+  top: 60%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: uv-eagle-line-grow 3s linear infinite 2s;
+}
+.uv-eagle__lines span:nth-child(4){
+  top: 80%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: uv-eagle-line-grow 3s linear infinite 1.5s;
+}
+
+.uv-eagle__corners span{
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(var(--eg-green), 0.35);
+  transition: all 0.3s ease;
+}
+.uv-eagle__corners span:nth-child(1){ top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+.uv-eagle__corners span:nth-child(2){ top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
+.uv-eagle__corners span:nth-child(3){ bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
+.uv-eagle__corners span:nth-child(4){ bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+.uv-eagle:hover .uv-eagle__corners span{
+  border-color: rgba(var(--eg-green), 0.85);
+  box-shadow: 0 0 10px rgba(var(--eg-green), 0.5);
+}
+
+.uv-eagle__scan{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(var(--eg-purple), 0.12),
+    transparent
+  );
+  transform: translateY(-100%);
+  animation: uv-eagle-scan-move 2s linear infinite;
+}
+@keyframes uv-eagle-line-grow{
+  0%{ transform: scaleX(0); opacity: 0; }
+  50%{ transform: scaleX(1); opacity: 1; }
+  100%{ transform: scaleX(0); opacity: 0; }
+}
+@keyframes uv-eagle-scan-move{
+  0%{ transform: translateY(-100%); }
+  100%{ transform: translateY(100%); }
+}
+
+/* ---------- 11. BOTÓN DE WHATSAPP — "unlucky-elephant" ----------
+   From Uiverse.io by mi-series - https://uiverse.io/mi-series/unlucky-elephant-56
+   MIT License, Copyright (c) mi-series (Md Mainul Islam Satabddo)
+   (clases renombradas con el prefijo .uv-elephant; cuadrícula en verde bambú; el contenedor es un único enlace
+   y las 4 zonas de las esquinas son <span> para no repetir el link) */
+.uv-elephant{
+  --elephant-shadow: var(--verde-bambu-claro);
+  position: relative;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  background: none;
+  perspective: 600px;
+}
+.uv-elephant:focus-visible{ outline: 2px solid var(--verde-bambu-claro); outline-offset: 8px; border-radius: 14px; }
+
+.uv-elephant__card{
+  display: block;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  position: relative;
+  z-index: 0;
+  transition: all 300ms ease-out;
+  transform-origin: center center;
+  min-width: 150px;
+  height: 50px;
+  box-shadow: 0 0 0 0 var(--elephant-shadow);
+  outline: none;
+}
+.uv-elephant__header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  white-space: nowrap;
+  padding: 10px 1.4rem;
+  background: linear-gradient(90deg, var(--verde-bambu) 20px, transparent 100%) center / 22px 22px,
+		linear-gradient(var(--verde-bambu) 20px, transparent 100%) center / 22px 22px,
+		#fff;
+  color: white;
+  height: 100%;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 1px solid white;
+  border-radius: 10px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .55);
+}
+.uv-elephant__icon{ font-size: 1.25em; line-height: 1; }
+
+/* Zonas sensibles de las 4 esquinas */
+.uv-elephant__zone{
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+}
+.uv-elephant__zone:hover{ transform: translateZ(50px); }
+.uv-elephant__zone:hover ~ .uv-elephant__card .uv-elephant__header{ transform: translateZ(24px); }
+
+.uv-elephant__zone:nth-child(1){ top: 0; left: 0; }
+.uv-elephant__zone:nth-child(1):hover ~ .uv-elephant__card{
+  transform: rotateX(10deg) rotateY(-10deg) translateZ(0);
+  transform-origin: right bottom;
+  box-shadow: 10px 20px 0 0 var(--elephant-shadow);
+}
+.uv-elephant__zone:nth-child(2){ top: 0; right: 0; }
+.uv-elephant__zone:nth-child(2):hover ~ .uv-elephant__card{
+  transform: rotateX(10deg) rotateY(10deg) translateZ(0);
+  transform-origin: left bottom;
+  box-shadow: -10px 20px 0 0 var(--elephant-shadow);
+}
+.uv-elephant__zone:nth-child(3){ bottom: 0; right: 0; }
+.uv-elephant__zone:nth-child(3):hover ~ .uv-elephant__card{
+  transform-origin: left top;
+  transform: rotateX(-10deg) rotateY(10deg) translateZ(0);
+  box-shadow: -10px -20px 0 0 var(--elephant-shadow);
+}
+.uv-elephant__zone:nth-child(4){ bottom: 0; left: 0; }
+.uv-elephant__zone:nth-child(4):hover ~ .uv-elephant__card{
+  transform-origin: right top;
+  transform: rotateX(-10deg) rotateY(-10deg) translateZ(0);
+  box-shadow: 10px -20px 0 0 var(--elephant-shadow);
+}
+/* Teclado: sin esquina, el botón se levanta de forma neutra */
+.uv-elephant:focus-visible .uv-elephant__card{
+  transform: rotateX(8deg) translateZ(0);
+  box-shadow: 0 14px 0 0 var(--elephant-shadow);
+}
 
 /* ---------- 12. CIERRE MOTIVACIONAL ---------- */
 .cierre{
@@ -433,25 +1105,19 @@ img{ max-width:100%; display:block; }
   font-family: var(--fuente-mono); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
   color: var(--verde-bambu-claro);
 }
-.cierre__frase{ font-size: clamp(1.5rem, 3vw, 2.2rem); line-height:1.4; }
+.cierre__frase{ font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height:1.25; font-weight: 700; }
 .cierre__cta{ font-size:1.1rem; color: var(--verde-bambu-claro); margin-top:1rem; }
 
 /* ---------- 13. CONTACTOS + WHATSAPP FLOTANTE ---------- */
 .contacto{ padding: 5rem 5vw; }
 .contacto__inner{ max-width: 60ch; }
 .contacto__lista{ margin: 1.4rem 0 1.8rem; display:flex; flex-direction:column; gap:.5rem; color: rgba(244,241,230,.85); }
-.contacto__whatsapp{ }
 
 .whatsapp-float{
   position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 60;
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: var(--verde-bambu);
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: var(--sombra);
 }
-.whatsapp-float::before{ border-radius: 50%; }
-.whatsapp-float__icon{ font-size: 1.6rem; color: var(--crema); }
+.whatsapp-float .uv-elephant__card{ min-width: 0; height: 46px; }
+.whatsapp-float .uv-elephant__header{ font-size: 1rem; padding: 8px 1.1rem; }
 
 /* ---------- 14. FOOTER ---------- */
 .footer{
@@ -475,12 +1141,17 @@ img{ max-width:100%; display:block; }
   .navbar__nav a{ font-size:.72rem; }
 
   .hero{ padding: 4.5rem 6vw 3rem; }
+  .hero__logo-stage{ --rabbit-scale: 1.1; margin-bottom: 4rem; }
   .funnel__cards{ flex-direction:column; align-items:center; }
 
   .grid-cards{ grid-template-columns: 1fr; }
+  .grid-cards--graf{ gap: 3rem; }
+  .uv-treefrog{ max-width: 265px; } /* deja margen para la inclinación en pantallas angostas */
   .grid-maint{ grid-template-columns: 1fr; }
 
-  .whatsapp-float{ width: 52px; height:52px; bottom:1.2rem; right:1.2rem; }
+  .whatsapp-float{ bottom:1.2rem; right:1.2rem; }
+  .whatsapp-float .uv-elephant__card{ height: 42px; }
+  .whatsapp-float .uv-elephant__header{ font-size: .92rem; padding: 6px .9rem; }
 }
 
 @media (min-width: 1400px){

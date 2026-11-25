@@ -7,20 +7,18 @@
 <meta name="description" content="Madake — publicidad gráfica y digital que crece contigo. Flexible como el bambú, fuerte como tu marca.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!--
-  NOTA TÉCNICA IMPORTANTE (carrito sin JavaScript):
+  NOTA TÉCNICA:
   Este sitio está construido 100% en HTML/CSS puro, sin JavaScript.
-  Los checkboxes de cada servicio permiten "marcar" visualmente lo que el
-  cliente quiere cotizar (cambia el estilo de la tarjeta a "agregado"),
-  pero como no hay JS no es posible sumar precios automáticamente ni
-  armar una lista dinámica del pedido. Por eso el botón final de WhatsApp
-  usa un enlace wa.me con un mensaje genérico predefinido: el cliente debe
-  escribir manualmente qué tarjetas marcó antes de enviarlo.
+  Las tarjetas de servicios muestran el título y el precio al frente y los detalles
+  al dorso (se dan vuelta al pasar el mouse o al enfocarlas con el teclado).
+  Los componentes animados vienen de Uiverse.io (MIT); cada uno conserva su crédito
+  como comentario junto al código que lo usa.
   Reemplazar las rutas de imagen (img/madake-*.png y img/hoja-bambu.png)
   por los archivos reales antes de publicar.
 -->
@@ -28,7 +26,7 @@
 <!-- ================= NAVBAR ================= -->
 <header class="navbar">
   <a href="#inicio" class="navbar__brand">
-    <img src="Assets/madake-logotipo-b.png" alt="Madake" style="width: 120px; height: 60px abjet-fit: contain;"
+    <img src="Assets/madake-logotipo-b.png" alt="Madake" style="width: 120px; height: 60px; object-fit: contain;">
   </a>
   <nav class="navbar__nav">
     <a href="#inicio">Inicio</a>
@@ -40,8 +38,27 @@
 <!-- ================= INICIO ================= -->
 <section id="inicio" class="hero">
   <div class="hero__logo-stage">
-    <img src="Assets/madake-logo-b.png" alt="Madake" class="hero__logo hero__logo--base">
-    <img src="Assets/madake-logo-n.png" alt="Madake" class="hero__logo hero__logo--active">
+    <!-- From Uiverse.io by Saad3092003 - https://uiverse.io/Saad3092003/chatty-rabbit-71
+         MIT License, Copyright (c) Saad3092003 (Saad Shaikh) -->
+    <div class="uv-rabbit" aria-hidden="true">
+      <div class="uv-rabbit__obj">
+        <div class="uv-rabbit__child">
+          <span class="uv-rabbit__plate"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo: gira sobre su eje; cara frontal y cara trasera (se lee bien de ambos lados) -->
+    <div class="hero__logo-spin">
+      <div class="hero__logo-face hero__logo-face--front">
+        <img src="Assets/madake-logo-b.png" alt="Madake" class="hero__logo hero__logo--base">
+        <img src="Assets/madake-logo-n.png" alt="" class="hero__logo hero__logo--active">
+      </div>
+      <div class="hero__logo-face hero__logo-face--back" aria-hidden="true">
+        <img src="Assets/madake-logo-b.png" alt="" class="hero__logo hero__logo--base">
+        <img src="Assets/madake-logo-n.png" alt="" class="hero__logo hero__logo--active">
+      </div>
+    </div>
   </div>
 
   <h1 class="hero__title">¿Necesitas Publicidad?</h1>
@@ -52,15 +69,29 @@
   <div class="funnel">
     <p class="funnel__question">¿Buscás publicidad gráfica o digital?</p>
     <div class="funnel__cards">
-      <a href="#graficos" class="funnel__card funnel__card--graficos">
-        <span class="funnel__card-eyebrow">Impreso</span>
-        <span class="funnel__card-title">Publicidad Gráfica</span>
-        <span class="funnel__card-sub">Folletos, tarjetas, banners, stickers y más</span>
+      <!-- From Uiverse.io by Spacious74 - https://uiverse.io/Spacious74/moody-owl-18
+           MIT License, Copyright (c) Spacious74 (VishalS) -->
+      <a href="#graficos" class="uv-owl uv-owl--graficos">
+        <div class="uv-owl__dot"></div>
+        <div class="uv-owl__card">
+          <div class="uv-owl__ray"></div>
+          <div class="uv-owl__text">Publicidad Gráfica</div>
+          <div class="uv-owl__line uv-owl__line--top"></div>
+          <div class="uv-owl__line uv-owl__line--left"></div>
+          <div class="uv-owl__line uv-owl__line--bottom"></div>
+          <div class="uv-owl__line uv-owl__line--right"></div>
+        </div>
       </a>
-      <a href="#digitales" class="funnel__card funnel__card--digitales">
-        <span class="funnel__card-eyebrow">Online</span>
-        <span class="funnel__card-title">Publicidad Digital</span>
-        <span class="funnel__card-sub">Redes sociales, video, web y branding</span>
+      <a href="#digitales" class="uv-owl uv-owl--digitales">
+        <div class="uv-owl__dot"></div>
+        <div class="uv-owl__card">
+          <div class="uv-owl__ray"></div>
+          <div class="uv-owl__text">Publicidad Digital</div>
+          <div class="uv-owl__line uv-owl__line--top"></div>
+          <div class="uv-owl__line uv-owl__line--left"></div>
+          <div class="uv-owl__line uv-owl__line--bottom"></div>
+          <div class="uv-owl__line uv-owl__line--right"></div>
+        </div>
       </a>
     </div>
   </div>
@@ -83,189 +114,243 @@
       <p class="bloque__nota">Todos los precios incluyen diseño gráfico.</p>
     </div>
 
-    <div class="grid-cards">
+    <!-- From Uiverse.io by gharsh11032000 - https://uiverse.io/gharsh11032000/loud-treefrog-81
+         MIT License, Copyright (c) gharsh11032000 (Harsh Gupta), gharsh11032000 (Harsh Gupta) -->
+    <div class="grid-cards grid-cards--graf">
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Folleto 1 cara</h3>
-            <p class="card__price">$10.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 15×10cm (1/4 A4), 100 unidades, impresión a una cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Folleto 1 cara</h3>
+                <p class="uv-treefrog__price">$10.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 15×10cm (1/4 A4), 100 unidades, impresión a una cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Folleto doble cara</h3>
-            <p class="card__price">$15.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 15×10cm, 100 unidades, impresión a doble cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Folleto doble cara</h3>
+                <p class="uv-treefrog__price">$15.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 15×10cm, 100 unidades, impresión a doble cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Tarjeta 1 cara</h3>
-            <p class="card__price">$19.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico, 5×10cm, 100 unidades, impresión a una cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Tarjeta 1 cara</h3>
+                <p class="uv-treefrog__price">$19.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico, 5×10cm, 100 unidades, impresión a una cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Tarjeta doble cara</h3>
-            <p class="card__price">$25.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico, 5×10cm, 100 unidades, impresión a doble cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Tarjeta doble cara</h3>
+                <p class="uv-treefrog__price">$25.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico, 5×10cm, 100 unidades, impresión a doble cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Talonario simple</h3>
-            <p class="card__price">$13.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 15×10cm, 100 unidades, 1 cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Talonario simple</h3>
+                <p class="uv-treefrog__price">$13.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 15×10cm, 100 unidades, 1 cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Talonario grande</h3>
-            <p class="card__price">$18.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 10×00cm, 100 unidades.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Talonario grande</h3>
+                <p class="uv-treefrog__price">$18.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 15×20cm, 100 unidades.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Imanes</h3>
-            <p class="card__price">$25.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico imantado, 5×5cm, 100 unidades.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Imanes</h3>
+                <p class="uv-treefrog__price">$25.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico imantado, 5×5cm, 100 unidades.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Banner con estructura</h3>
-            <p class="card__price">Cotizar</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Lona full color, tamaño estándar, 1 unidad. Precio variable.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Banner con estructura</h3>
+                <p class="uv-treefrog__price">Cotizar</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Lona full color, tamaño estándar, 1 unidad. Precio variable.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Stickers</h3>
-            <p class="card__price">$20.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico adhesivo, 5×5cm, 100 unidades.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Stickers</h3>
+                <p class="uv-treefrog__price">$20.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico adhesivo, 5×5cm, 100 unidades.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Cartelería A4</h3>
-            <p class="card__price">$20.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 100 unidades, 1 cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Cartelería A4</h3>
+                <p class="uv-treefrog__price">$20.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 100 unidades, 1 cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Cartelería A3</h3>
-            <p class="card__price">$30.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel normal, 100 unidades, 1 cara.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Cartelería A3</h3>
+                <p class="uv-treefrog__price">$30.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel normal, 100 unidades, 1 cara.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Impresión fotográfica A4</h3>
-            <p class="card__price">$2.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico, 1 unidad.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Impresión fotográfica A4</h3>
+                <p class="uv-treefrog__price">$2.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico, 1 unidad.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--graf">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Impresión fotográfica A3</h3>
-            <p class="card__price">$4.000</p>
-            <span class="card__added">✓ Agregado</span>
-          </div>
-          <div class="card__back">
-            <p>Papel fotográfico, 1 unidad.</p>
+      <div class="uv-treefrog" tabindex="0">
+        <div class="uv-treefrog__card">
+          <div class="uv-treefrog__inner">
+            <div class="uv-treefrog__face uv-treefrog__front">
+              <div class="uv-treefrog__content">
+                <h3 class="uv-treefrog__title">Impresión fotográfica A3</h3>
+                <p class="uv-treefrog__price">$4.000</p>
+              </div>
+            </div>
+            <div class="uv-treefrog__face uv-treefrog__back">
+              <div class="uv-treefrog__content">
+                <p class="uv-treefrog__para">Papel fotográfico, 1 unidad.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </label>
+      </div>
 
     </div>
   </div>
@@ -280,97 +365,201 @@
       <p class="bloque__nota">Piezas, video y presencia web para que tu marca crezca donde te buscan.</p>
     </div>
 
+    <!-- From Uiverse.io by IWhat1 - https://uiverse.io/IWhat1/loud-frog-61
+         MIT License, Copyright (c) IWhat1, IWhat1 (CHINTA JAYA KRISHNA), IWhat1 (CHINTA JAYA KRISHNA) -->
     <div class="grid-cards">
 
-      <label class="card card--dig">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Flyer digital individual</h3>
-            <p class="card__price">$9.000</p>
-            <span class="card__added">✓ Agregado</span>
+      <div class="uv-frog" tabindex="0">
+        <div class="uv-frog__card">
+          <div class="uv-frog__front">
+            <h3 class="uv-frog__heading">Flyer digital individual</h3>
+            <p class="uv-frog__price">$9.000</p>
           </div>
-          <div class="card__back">
-            <p>Diseño para redes sociales o imprimir, 1 pieza.</p>
+          <div class="uv-frog__back">
+            <p class="uv-frog__detail">Diseño para redes sociales o imprimir, 1 pieza.</p>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--dig">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Video corto (30seg o +)</h3>
-            <p class="card__price">$35.000</p>
-            <span class="card__added">✓ Agregado</span>
+      <div class="uv-frog" tabindex="0">
+        <div class="uv-frog__card">
+          <div class="uv-frog__front">
+            <h3 class="uv-frog__heading">Video corto (30seg o +)</h3>
+            <p class="uv-frog__price">$35.000</p>
           </div>
-          <div class="card__back">
-            <p>Grabado con cámara Canon y edición profesional.</p>
+          <div class="uv-frog__back">
+            <p class="uv-frog__detail">Grabado con cámara Canon y edición profesional.</p>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--dig">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Kit Inicial</h3>
-            <p class="card__price">$60.000</p>
-            <span class="card__added">✓ Agregado</span>
+      <div class="uv-frog" tabindex="0">
+        <div class="uv-frog__card">
+          <div class="uv-frog__front">
+            <h3 class="uv-frog__heading">Kit Inicial</h3>
+            <p class="uv-frog__price">$60.000</p>
           </div>
-          <div class="card__back">
-            <p>Logo + 1 carrusel o 5 flyers + 1 video.</p>
+          <div class="uv-frog__back">
+            <p class="uv-frog__detail">Logo + 1 carrusel o 5 flyers + 1 video.</p>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--dig">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Creación de web básica</h3>
-            <p class="card__price">$90.000</p>
-            <span class="card__added">✓ Agregado</span>
+      <div class="uv-frog" tabindex="0">
+        <div class="uv-frog__card">
+          <div class="uv-frog__front">
+            <h3 class="uv-frog__heading">Creación de web básica</h3>
+            <p class="uv-frog__price">$90.000</p>
           </div>
-          <div class="card__back">
-            <p>Página única: información, servicios y contactos.</p>
+          <div class="uv-frog__back">
+            <p class="uv-frog__detail">Página única: información, servicios y contactos.</p>
           </div>
         </div>
-      </label>
+      </div>
 
-      <label class="card card--dig">
-        <input type="checkbox" class="card__check">
-        <div class="card__inner">
-          <div class="card__front">
-            <h3>Creación de web completa</h3>
-            <p class="card__price">$200.000</p>
-            <span class="card__added">✓ Agregado</span>
+      <div class="uv-frog" tabindex="0">
+        <div class="uv-frog__card">
+          <div class="uv-frog__front">
+            <h3 class="uv-frog__heading">Creación de web completa</h3>
+            <p class="uv-frog__price">$200.000</p>
           </div>
-          <div class="card__back">
-            <p>Información, servicios, fotos y contactos.</p>
+          <div class="uv-frog__back">
+            <p class="uv-frog__detail">Información, servicios, fotos y contactos.</p>
           </div>
         </div>
-      </label>
+      </div>
 
     </div>
 
     <h3 class="submaint__title">Mantenimiento de redes sociales <span>(mensual a renovación)</span></h3>
 
+    <!-- From Uiverse.io by 00Kubi - https://uiverse.io/00Kubi/cowardly-eagle-56
+         MIT License, Copyright (c) kennyotsu (kotsu), 00Kubi (Kubi) -->
     <div class="grid-maint">
-      <div class="maint-card maint-card--basico">
-        <h4>Kit Básico</h4>
-        <p class="maint-card__price">$25.000<span>/mes</span></p>
-        <p class="maint-card__detail">8 publicaciones al mes (2 por semana), sin sesión de fotos.</p>
+      <div class="uv-eagle uv-eagle--noselect" tabindex="0">
+        <div class="uv-eagle__canvas">
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+          <div class="uv-eagle__card">
+            <div class="uv-eagle__content">
+              <div class="uv-eagle__glare"></div>
+              <div class="uv-eagle__lines">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <p class="uv-eagle__prompt">VER DETALLES</p>
+              <div class="uv-eagle__face uv-eagle__face--front">
+                <div class="uv-eagle__title">Kit<br>Básico</div>
+                <div class="uv-eagle__price">
+                  <span class="uv-eagle__amount">$25.000</span>
+                  <span class="uv-eagle__per">/mes</span>
+                </div>
+              </div>
+              <div class="uv-eagle__face uv-eagle__face--back">
+                <p class="uv-eagle__back-title">Kit Básico</p>
+                <p class="uv-eagle__detail">8 publicaciones al mes (2 por semana), sin sesión de fotos.</p>
+              </div>
+              <div class="uv-eagle__glows">
+                <div class="uv-eagle__glow-1"></div>
+                <div class="uv-eagle__glow-2"></div>
+                <div class="uv-eagle__glow-3"></div>
+              </div>
+              <div class="uv-eagle__particles">
+                <span></span><span></span><span></span> <span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__corners">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__scan"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="maint-card maint-card--estandar">
-        <h4>Kit Estándar</h4>
-        <p class="maint-card__price">$50.000<span>/mes</span></p>
-        <p class="maint-card__detail">12 publicaciones al mes + 1 sesión de fotos profesional mensual.</p>
+
+      <div class="uv-eagle uv-eagle--noselect" tabindex="0">
+        <div class="uv-eagle__canvas">
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+          <div class="uv-eagle__card">
+            <div class="uv-eagle__content">
+              <div class="uv-eagle__glare"></div>
+              <div class="uv-eagle__lines">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <p class="uv-eagle__prompt">VER DETALLES</p>
+              <div class="uv-eagle__face uv-eagle__face--front">
+                <div class="uv-eagle__title">Kit<br>Estándar</div>
+                <div class="uv-eagle__price">
+                  <span class="uv-eagle__amount">$50.000</span>
+                  <span class="uv-eagle__per">/mes</span>
+                </div>
+              </div>
+              <div class="uv-eagle__face uv-eagle__face--back">
+                <p class="uv-eagle__back-title">Kit Estándar</p>
+                <p class="uv-eagle__detail">12 publicaciones al mes + 1 sesión de fotos profesional mensual.</p>
+              </div>
+              <div class="uv-eagle__glows">
+                <div class="uv-eagle__glow-1"></div>
+                <div class="uv-eagle__glow-2"></div>
+                <div class="uv-eagle__glow-3"></div>
+              </div>
+              <div class="uv-eagle__particles">
+                <span></span><span></span><span></span> <span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__corners">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__scan"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="maint-card maint-card--premium">
-        <h4>Kit Premium</h4>
-        <p class="maint-card__price">$100.000<span>/mes</span></p>
-        <p class="maint-card__detail">20 publicaciones al mes + sesión de fotos + 1 video corto mensual.</p>
+
+      <div class="uv-eagle uv-eagle--noselect" tabindex="0">
+        <div class="uv-eagle__canvas">
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+        <div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div><div class="uv-eagle__tracker"></div>
+          <div class="uv-eagle__card">
+            <div class="uv-eagle__content">
+              <div class="uv-eagle__glare"></div>
+              <div class="uv-eagle__lines">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <p class="uv-eagle__prompt">VER DETALLES</p>
+              <div class="uv-eagle__face uv-eagle__face--front">
+                <div class="uv-eagle__title">Kit<br>Premium</div>
+                <div class="uv-eagle__price">
+                  <span class="uv-eagle__amount">$100.000</span>
+                  <span class="uv-eagle__per">/mes</span>
+                </div>
+              </div>
+              <div class="uv-eagle__face uv-eagle__face--back">
+                <p class="uv-eagle__back-title">Kit Premium</p>
+                <p class="uv-eagle__detail">20 publicaciones al mes + sesión de fotos + 1 video corto mensual.</p>
+              </div>
+              <div class="uv-eagle__glows">
+                <div class="uv-eagle__glow-1"></div>
+                <div class="uv-eagle__glow-2"></div>
+                <div class="uv-eagle__glow-3"></div>
+              </div>
+              <div class="uv-eagle__particles">
+                <span></span><span></span><span></span> <span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__corners">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="uv-eagle__scan"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -392,16 +581,24 @@
     <div class="contacto__texto">
       <span class="bloque__eyebrow">Nudo 03 · Hablemos</span>
       <h2 class="bloque__title">Contactos</h2>
-      <p>Contanos qué necesitás y armamos tu cotización. Marcá los servicios que te interesan en las tarjetas de arriba y contanos por WhatsApp cuáles elegiste.</p>
+      <p>Contanos qué necesitás y armamos tu cotización. Escribinos por WhatsApp y contanos qué servicios te interesan.</p>
       <ul class="contacto__lista">
         <li><strong>WhatsApp:</strong> +54 264 439-3343</li>
         <li><strong>Horario:</strong> Siempre Activo</li>
         <li><strong>Zona:</strong> San Juan, Argentina</li>
       </ul>
-      <a class="btn-ripple btn-border-anim contacto__whatsapp"
+      <!-- From Uiverse.io by mi-series - https://uiverse.io/mi-series/unlucky-elephant-56
+           MIT License, Copyright (c) mi-series (Md Mainul Islam Satabddo) -->
+      <a class="uv-elephant"
          href="https://wa.me/5492644393343?text=Hola%2C%20quiero%20cotizar%20los%20siguientes%20servicios%20de%20Madake%3A%20%5Bdetallar%20aqu%C3%AD%5D"
-         target="_blank" rel="noopener">
-        Escribinos por WhatsApp
+         target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__card">
+          <span class="uv-elephant__header">Escribinos por WhatsApp</span>
+        </span>
       </a>
     </div>
   </div>
@@ -411,12 +608,20 @@
   <p>© 2027 Madake · Publicidad Gráfica y Digital</p>
 </footer>
 
-<!-- Botón flotante de WhatsApp -->
-<a class="whatsapp-float btn-border-anim"
-   href="https://wa.me/5492644393343?text=Hola%2C%20quiero%20cotizar%20los%20siguientes%20servicios%20de%20Madake%3A%20%5Bdetallar%20aqu%C3%AD%5D"
-   target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-  <span class="whatsapp-float__icon">✆</span>
-</a>
+<!-- Botón flotante de WhatsApp (mismo componente de Uiverse.io: unlucky-elephant-56, by mi-series, MIT License) -->
+<div class="whatsapp-float">
+  <a class="uv-elephant"
+         href="https://wa.me/5492644393343?text=Hola%2C%20quiero%20cotizar%20los%20siguientes%20servicios%20de%20Madake%3A%20%5Bdetallar%20aqu%C3%AD%5D"
+         target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__zone"></span>
+        <span class="uv-elephant__card">
+          <span class="uv-elephant__header"><span class="uv-elephant__icon" aria-hidden="true">✆</span> WhatsApp</span>
+        </span>
+      </a>
+</div>
 
 </body>
 </html>
